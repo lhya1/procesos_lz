@@ -151,6 +151,150 @@
             box-shadow: 0 10px 25px rgba(156, 178, 201, 0.3);
         }
 
+        /* ------------------------------------------------------------------ */
+        /* 🩵 NUEVA SECCIÓN ESTILO CORAZÓN / SOFT LAYOUT (INSPIRADA EN LA IMAGEN) */
+        /* ------------------------------------------------------------------ */
+        .soft-profile-section {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .soft-profile-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        /* Lado Izquierdo: Tarjetas y Widgets UI */
+        .soft-widgets-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            position: relative;
+        }
+
+        .soft-card {
+            background: var(--card-white);
+            border-radius: 20px;
+            padding: 16px;
+            border: 2px solid rgba(186, 204, 219, 0.5);
+            box-shadow: 0 8px 20px rgba(156, 178, 201, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .soft-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        .soft-card-mini-user {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .soft-card-mini-user img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+        }
+
+        .soft-user-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .soft-user-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--blue-ui);
+        }
+
+        .soft-card-quote {
+            grid-column: span 2;
+            background: #f8fafc;
+            border: 2px solid rgba(186, 204, 219, 0.4);
+            border-radius: 22px;
+            padding: 22px;
+            position: relative;
+        }
+
+        .quote-header-tags {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .quote-main-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.25rem;
+            color: var(--blue-ui);
+            margin-bottom: 8px;
+        }
+
+        .quote-chip {
+            background: #e2e8f0;
+            color: var(--text-muted);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .quote-body-flex {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .quote-badge-box {
+            background: var(--blue-soft);
+            color: #fff;
+            padding: 15px;
+            border-radius: 18px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            min-width: 110px;
+        }
+
+        .quote-text-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .heart-icon-divider {
+            text-align: center;
+            grid-column: span 2;
+            color: var(--blue-soft);
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+        }
+
+        /* Lado Derecho: Imagen de Marco Principal */
+        .soft-main-photo {
+            position: relative;
+        }
+
+        .soft-main-photo img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 32px;
+            box-shadow: 0 15px 35px rgba(156, 178, 201, 0.3);
+            border: 4px solid #fff;
+        }
+
+        /* ------------------------------------------------------------------ */
+
         /* ETIQUETAS DE SECCIÓN */
         .section-header-tag {
             text-align: center;
@@ -162,7 +306,7 @@
             font-weight: 600;
         }
 
-        /* 📸 SECCIÓN SOFT UI */
+        /* 📸 SECCIÓN SOFT UI GALERÍA */
         .aesthetic-gallery {
             max-width: 1000px;
             margin: 0 auto 100px;
@@ -439,12 +583,18 @@
         }
 
         @media (max-width: 768px) {
-            .hero-section, .ui-window-body, .writing-box {
+            .hero-section, .soft-profile-grid, .soft-widgets-container, .ui-window-body, .writing-box {
                 grid-template-columns: 1fr;
             }
             .hero-img-box {
                 text-align: center;
                 margin-top: 20px;
+            }
+            .soft-card-quote {
+                grid-column: span 1;
+            }
+            .heart-icon-divider {
+                grid-column: span 1;
             }
         }
     </style>
@@ -460,6 +610,7 @@
     <!-- Menú de Navegación -->
     <nav>
         <a href="#">Inicio</a>
+        <a href="#soft-profile">Perfil Soft</a>
         <a href="#historias">Historias</a>
         <a href="#reflexion">Reflexiones</a>
         <a href="#videos">Videos</a>
@@ -482,7 +633,64 @@
         </div>
     </section>
 
-    <!-- 2. APARTADO: PEQUEÑAS HISTORIAS -->
+    <!-- 🩵 2. NUEVO APARTADO: ESTILO SOFT UI / PERFIL CORAZÓN (DESPUÉS DE INICIO) -->
+    <section class="soft-profile-section" id="soft-profile" data-aos="fade-up">
+        <div class="soft-profile-grid">
+            
+            <!-- Contenedor Izquierdo de Widgets -->
+            <div class="soft-widgets-container">
+                <!-- Tarjeta 1: Foto Cuadrada -->
+                <div class="soft-card">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Foto Soft 1">
+                </div>
+
+                <!-- Tarjeta 2: Usuario y Mensaje Corto -->
+                <div class="soft-card">
+                    <div class="soft-card-mini-user">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Perfil mini">
+                        <div>
+                            <div class="soft-user-title">my sweet darling</div>
+                            <div class="soft-user-text">Eres mi pequeña estrellita, esa que me guía en la oscuridad.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divisor con Corazones -->
+                <div class="heart-icon-divider">🩵 🩵</div>
+
+                <!-- Tarjeta 3: Foto 2 -->
+                <div class="soft-card">
+                    <img src="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=600&q=80" alt="Foto Soft 2">
+                </div>
+
+                <!-- Tarjeta 4: Cita & Badges Especiales -->
+                <div class="soft-card-quote">
+                    <div class="quote-header-tags">
+                        <span class="quote-chip">#CFE0E7</span>
+                        <span class="quote-chip">winter</span>
+                    </div>
+                    <div class="quote-main-title">“You are beautiful, you are special.”</div>
+                    
+                    <div class="quote-body-flex">
+                        <div class="quote-badge-box">
+                            BEST FRIEND ➔
+                        </div>
+                        <div class="quote-text-desc">
+                            Sé que no lo digo mucho, pero quiero que sepas que te quiero con todo mi corazón. Eres mi mejor luz en este camino.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenedor Derecho: Foto Principal estilo Marco de Nieve/Corazón -->
+            <div class="soft-main-photo">
+                <img src="https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&w=800&q=80" alt="Foto Principal Nieve">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. APARTADO: PEQUEÑAS HISTORIAS -->
     <section class="stories-section" id="historias">
         <div class="section-header-tag" data-aos="fade-up">• Pequeñas Historias de Fe •</div>
         
@@ -510,7 +718,7 @@
         </div>
     </section>
 
-    <!-- 3. APARTADO: LECTURA Y ESCRITURA -->
+    <!-- 4. APARTADO: LECTURA Y ESCRITURA -->
     <section class="writing-section" id="reflexion">
         <div class="writing-box" data-aos="zoom-in">
             <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=600&q=80" class="writing-img" alt="Escritura y mar">
@@ -522,7 +730,7 @@
         </div>
     </section>
 
-    <!-- 4. APARTADO: VIDEOS -->
+    <!-- 5. APARTADO: VIDEOS -->
     <section class="videos-section" id="videos">
         <div class="section-header-tag" data-aos="fade-up">• Videos & Momentos •</div>
         <div class="video-grid">
@@ -542,7 +750,7 @@
         </div>
     </section>
 
-    <!-- 5. APARTADO: GALERÍA SOFT UI Y COLLAGE POLAROID -->
+    <!-- 6. APARTADO: GALERÍA SOFT UI Y COLLAGE POLAROID -->
     <section class="aesthetic-gallery" id="galeria">
         <div class="section-header-tag" data-aos="fade-up">• Galería & Momentos •</div>
 
