@@ -43,8 +43,8 @@
             line-height: 1.6;
         }
 
-        /* 🌊 FONDO ANIMADO DE MAR */
-        .sea-background {
+        /* 🪼 FONDO ANIMADO DE MEDUSA BIOLUMINOSA ESPACIAL */
+        .jellyfish-background {
             position: fixed;
             top: 0;
             left: 0;
@@ -56,25 +56,47 @@
             overflow: hidden;
         }
 
-        .wave {
+        /* Contenedor flotante de la medusa */
+        .jellyfish-container {
             position: absolute;
-            bottom: -50px;
-            left: 0;
-            width: 200%;
-            height: 300px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C150,90 350,-40 500,40 C650,120 900,20 1200,60 L1200,120 L0,120 Z" fill="rgba(156, 178, 201, 0.25)"></path></svg>') repeat-x;
-            animation: waveMove 18s linear infinite;
+            top: 15%;
+            right: 5%;
+            width: 380px;
+            height: 550px;
+            opacity: 0.45;
+            filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.6));
+            animation: floatJelly 12s ease-in-out infinite alternate;
         }
 
-        .wave.wave2 {
-            bottom: -30px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C200,40 400,10 600,50 C800,90 1000,30 1200,80 L1200,120 L0,120 Z" fill="rgba(255, 255, 255, 0.5)"></path></svg>') repeat-x;
-            animation: waveMove 12s linear infinite reverse;
+        /* Movimiento de pulsación y nado de la medusa */
+        @keyframes floatJelly {
+            0% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translateY(-40px) rotate(-3deg) scale(1.03);
+            }
+            100% {
+                transform: translateY(-80px) rotate(2deg) scale(0.98);
+            }
         }
 
-        @keyframes waveMove {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        /* Destellos / Partículas estelares alrededor de la medusa */
+        .jelly-sparkle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.7);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+            animation: sparkleFade 4s ease-in-out infinite alternate;
+        }
+
+        .s1 { top: 20%; left: 30%; width: 6px; height: 6px; animation-delay: 0s; }
+        .s2 { top: 45%; left: 70%; width: 8px; height: 8px; animation-delay: 1.5s; }
+        .s3 { top: 70%; left: 20%; width: 5px; height: 5px; animation-delay: 3s; }
+
+        @keyframes sparkleFade {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.4); }
         }
 
         /* NAVEGACIÓN FLOTANTE */
@@ -561,9 +583,7 @@
             font-weight: 600;
         }
 
-        /* ------------------------------------------------------------------ */
-        /* ✉️ NUEVA SECCIÓN: SOBRE EDITORIAL VINTAGE (AL FINAL DEL CÓDIGO)   */
-        /* ------------------------------------------------------------------ */
+        /* ✉️ SECCIÓN: SOBRE EDITORIAL VINTAGE */
         .envelope-section {
             max-width: 900px;
             margin: 0 auto 120px;
@@ -591,7 +611,6 @@
             margin-bottom: 10px;
         }
 
-        /* Hoja de carta interior */
         .letter-paper {
             background: #ffffff;
             border-radius: 16px;
@@ -674,7 +693,6 @@
             margin-top: 25px;
         }
 
-        /* Lazo / Moño de encaje azul en la parte inferior */
         .ribbon-bow {
             position: absolute;
             bottom: -35px;
@@ -687,7 +705,6 @@
             filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
             pointer-events: none;
         }
-        /* ------------------------------------------------------------------ */
 
         /* FOOTER */
         footer {
@@ -718,15 +735,52 @@
             .letter-watermark-title {
                 font-size: 3.2rem;
             }
+            .jellyfish-container {
+                width: 250px;
+                height: 380px;
+                right: 0;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Fondo Animado de Mar -->
-    <div class="sea-background">
-        <div class="wave"></div>
-        <div class="wave wave2"></div>
+    <!-- 🪼 Fondo Animado de Medusa Espacial Bioluminosa -->
+    <div class="jellyfish-background">
+        <div class="jellyfish-container">
+            <!-- Ilustración Vectorial de la Medusa Luminosa -->
+            <svg viewBox="0 0 300 500" width="100%" height="100%">
+                <defs>
+                    <radialGradient id="jellyGlow" cx="50%" cy="30%" r="50%">
+                        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/>
+                        <stop offset="50%" stop-color="#0284c7" stop-opacity="0.5"/>
+                        <stop offset="100%" stop-color="#93c5fd" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="tentacleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+                        <stop offset="50%" stop-color="#a5f3fc" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.05"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Cabeza de la Medusa (Sombrilla) -->
+                <path d="M 50 150 C 50 40, 250 40, 250 150 C 230 170, 210 145, 180 155 C 150 165, 130 145, 100 155 C 70 165, 50 150, 50 150 Z" 
+                      fill="url(#jellyGlow)" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+                <path d="M 80 130 C 100 70, 200 70, 220 130" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+
+                <!-- Tentáculos Fluidos -->
+                <path d="M 80 155 Q 60 250, 90 340 T 70 480" fill="none" stroke="url(#tentacleGrad)" stroke-width="3"/>
+                <path d="M 110 160 Q 140 270, 100 370 T 130 490" fill="none" stroke="url(#tentacleGrad)" stroke-width="4"/>
+                <path d="M 150 165 Q 120 280, 160 380 T 150 500" fill="none" stroke="url(#tentacleGrad)" stroke-width="5"/>
+                <path d="M 190 160 Q 210 260, 180 360 T 210 480" fill="none" stroke="url(#tentacleGrad)" stroke-width="4"/>
+                <path d="M 220 155 Q 240 250, 210 350 T 230 470" fill="none" stroke="url(#tentacleGrad)" stroke-width="3"/>
+            </svg>
+        </div>
+
+        <!-- Partículas de Luz Flotantes -->
+        <div class="jelly-sparkle s1"></div>
+        <div class="jelly-sparkle s2"></div>
+        <div class="jelly-sparkle s3"></div>
     </div>
 
     <!-- Menú de Navegación -->
@@ -918,7 +972,7 @@
         </div>
     </section>
 
-    <!-- ✉️ 7. NUEVO APARTADO AL FINAL: SOBRE EDITORIAL VINTAGE (LES SECRETS) -->
+    <!-- ✉️ 7. APARTADO: SOBRE EDITORIAL VINTAGE (LES SECRETS) -->
     <section class="envelope-section" id="secrets-envelope" data-aos="fade-up">
         <div class="envelope-wrapper">
             
