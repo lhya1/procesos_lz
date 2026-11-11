@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Montserrat:wght@300;400;500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Librería AOS para efectos de transición al deslizar -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -151,9 +151,7 @@
             box-shadow: 0 10px 25px rgba(156, 178, 201, 0.3);
         }
 
-        /* ------------------------------------------------------------------ */
-        /* 🩵 NUEVA SECCIÓN ESTILO CORAZÓN / SOFT LAYOUT (INSPIRADA EN LA IMAGEN) */
-        /* ------------------------------------------------------------------ */
+        /* 🩵 SECCIÓN ESTILO CORAZÓN / SOFT LAYOUT */
         .soft-profile-section {
             max-width: 1100px;
             margin: 0 auto 100px;
@@ -167,7 +165,6 @@
             align-items: center;
         }
 
-        /* Lado Izquierdo: Tarjetas y Widgets UI */
         .soft-widgets-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -279,7 +276,6 @@
             letter-spacing: 5px;
         }
 
-        /* Lado Derecho: Imagen de Marco Principal */
         .soft-main-photo {
             position: relative;
         }
@@ -292,8 +288,6 @@
             box-shadow: 0 15px 35px rgba(156, 178, 201, 0.3);
             border: 4px solid #fff;
         }
-
-        /* ------------------------------------------------------------------ */
 
         /* ETIQUETAS DE SECCIÓN */
         .section-header-tag {
@@ -567,6 +561,134 @@
             font-weight: 600;
         }
 
+        /* ------------------------------------------------------------------ */
+        /* ✉️ NUEVA SECCIÓN: SOBRE EDITORIAL VINTAGE (AL FINAL DEL CÓDIGO)   */
+        /* ------------------------------------------------------------------ */
+        .envelope-section {
+            max-width: 900px;
+            margin: 0 auto 120px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .envelope-wrapper {
+            background: linear-gradient(180deg, #c4d7e6 0%, #a8c2d8 100%);
+            border-radius: 20px;
+            padding: 40px 30px 140px;
+            box-shadow: 0 20px 40px rgba(156, 178, 201, 0.35);
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            overflow: visible;
+        }
+
+        .envelope-header-info {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        /* Hoja de carta interior */
+        .letter-paper {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(156, 178, 201, 0.3);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+
+        .envelope-wrapper:hover .letter-paper {
+            transform: translateY(-20px);
+        }
+
+        .letter-watermark-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 4.5rem;
+            color: var(--blue-ui);
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            opacity: 0.85;
+        }
+
+        .letter-sub {
+            text-align: center;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            border-bottom: 1px dashed #cbd5e1;
+            padding-bottom: 8px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .letter-grid-content {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .key-illustration-box {
+            text-align: center;
+            position: relative;
+        }
+
+        .key-icon-art {
+            font-size: 5rem;
+            color: var(--blue-pastel);
+            filter: drop-shadow(0 4px 10px rgba(123, 155, 185, 0.3));
+            display: inline-block;
+            transform: rotate(-15deg);
+        }
+
+        .key-sub-caption {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        .letter-body-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .letter-signature {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.2rem;
+            color: var(--blue-ui);
+            text-align: right;
+            margin-top: 25px;
+        }
+
+        /* Lazo / Moño de encaje azul en la parte inferior */
+        .ribbon-bow {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            text-align: center;
+            font-size: 4.5rem;
+            color: #90b0ce;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
+            pointer-events: none;
+        }
+        /* ------------------------------------------------------------------ */
+
         /* FOOTER */
         footer {
             text-align: center;
@@ -583,18 +705,18 @@
         }
 
         @media (max-width: 768px) {
-            .hero-section, .soft-profile-grid, .soft-widgets-container, .ui-window-body, .writing-box {
+            .hero-section, .soft-profile-grid, .soft-widgets-container, .ui-window-body, .writing-box, .letter-grid-content {
                 grid-template-columns: 1fr;
             }
             .hero-img-box {
                 text-align: center;
                 margin-top: 20px;
             }
-            .soft-card-quote {
+            .soft-card-quote, .heart-icon-divider {
                 grid-column: span 1;
             }
-            .heart-icon-divider {
-                grid-column: span 1;
+            .letter-watermark-title {
+                font-size: 3.2rem;
             }
         }
     </style>
@@ -615,6 +737,7 @@
         <a href="#reflexion">Reflexiones</a>
         <a href="#videos">Videos</a>
         <a href="#galeria">Galería</a>
+        <a href="#secrets-envelope">Secretos</a>
         <a href="https://www.instagram.com/procesos_lz" target="_blank">Instagram</a>
     </nav>
 
@@ -633,18 +756,16 @@
         </div>
     </section>
 
-    <!-- 🩵 2. NUEVO APARTADO: ESTILO SOFT UI / PERFIL CORAZÓN (DESPUÉS DE INICIO) -->
+    <!-- 🩵 2. APARTADO: ESTILO SOFT UI / PERFIL CORAZÓN -->
     <section class="soft-profile-section" id="soft-profile" data-aos="fade-up">
         <div class="soft-profile-grid">
             
             <!-- Contenedor Izquierdo de Widgets -->
             <div class="soft-widgets-container">
-                <!-- Tarjeta 1: Foto Cuadrada -->
                 <div class="soft-card">
                     <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Foto Soft 1">
                 </div>
 
-                <!-- Tarjeta 2: Usuario y Mensaje Corto -->
                 <div class="soft-card">
                     <div class="soft-card-mini-user">
                         <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Perfil mini">
@@ -655,15 +776,12 @@
                     </div>
                 </div>
 
-                <!-- Divisor con Corazones -->
                 <div class="heart-icon-divider">🩵 🩵</div>
 
-                <!-- Tarjeta 3: Foto 2 -->
                 <div class="soft-card">
                     <img src="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=600&q=80" alt="Foto Soft 2">
                 </div>
 
-                <!-- Tarjeta 4: Cita & Badges Especiales -->
                 <div class="soft-card-quote">
                     <div class="quote-header-tags">
                         <span class="quote-chip">#CFE0E7</span>
@@ -682,7 +800,7 @@
                 </div>
             </div>
 
-            <!-- Contenedor Derecho: Foto Principal estilo Marco de Nieve/Corazón -->
+            <!-- Contenedor Derecho: Foto Principal -->
             <div class="soft-main-photo">
                 <img src="https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&w=800&q=80" alt="Foto Principal Nieve">
             </div>
@@ -797,6 +915,42 @@
                     <div class="polaroid-caption">CALMA.JPG</div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ✉️ 7. NUEVO APARTADO AL FINAL: SOBRE EDITORIAL VINTAGE (LES SECRETS) -->
+    <section class="envelope-section" id="secrets-envelope" data-aos="fade-up">
+        <div class="envelope-wrapper">
+            
+            <div class="envelope-header-info">
+                <span>Francia , Brassac</span>
+                <span>06 / 02 / 26</span>
+            </div>
+
+            <!-- Hoja de Carta Interior -->
+            <div class="letter-paper">
+                <div class="letter-watermark-title">Les secrets</div>
+                <div class="letter-sub">Portafolio & Reflexiones del Alma</div>
+
+                <div class="letter-grid-content">
+                    <div class="key-illustration-box">
+                        <div class="key-icon-art">🗝️</div>
+                        <div class="key-sub-caption">
+                            Beauties found in a lake<br>
+                            Drawing by : Swan Lake
+                        </div>
+                    </div>
+
+                    <div class="letter-body-text">
+                        <p style="font-weight: 600; margin-bottom: 8px; color: var(--blue-ui);">26 years; 26 secrets about a swan.</p>
+                        <p>Cada proceso guardado en este lugar es una llave para entender los tiempos de Dios. Hay secretos que solo se descubren en la quietud de las aguas profundas.</p>
+                        <div class="letter-signature">att: Swan</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lazo Azul Decorativo en el Sobre -->
+            <div class="ribbon-bow">🎀</div>
         </div>
     </section>
 
