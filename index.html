@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Montserrat:wght@300;400;500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Librería AOS para efectos de transición al deslizar -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         :root {
             --bg-light: #edf2f7;
@@ -26,6 +29,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -70,16 +77,21 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* NAVEGACIÓN AESTHETIC */
+        /* NAVEGACIÓN */
         nav {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             padding: 30px 20px;
             font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
+            position: sticky;
+            top: 0;
+            background: rgba(237, 242, 247, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
         }
 
         nav a {
@@ -96,7 +108,7 @@
         .hero-section {
             position: relative;
             max-width: 1100px;
-            margin: 20px auto 80px;
+            margin: 40px auto 80px;
             padding: 0 20px;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -128,7 +140,7 @@
             margin-top: 15px;
         }
 
-        .hero-img-box {
+        .hero-img-box text-align: right; {
             text-align: right;
         }
 
@@ -138,16 +150,8 @@
             box-shadow: 0 10px 25px rgba(156, 178, 201, 0.3);
         }
 
-        /* ------------------------------------------------------------------ */
-        /* 📸 NUEVA SECCIÓN DE IMÁGENES: ESTILO SOFT AESTHETIC (WNNI / SOFT UI) */
-        /* ------------------------------------------------------------------ */
-        .aesthetic-gallery {
-            max-width: 1000px;
-            margin: 0 auto 120px;
-            padding: 0 20px;
-        }
-
-        .gallery-header-tag {
+        /* SECCIÓN GENERAL TITULOS */
+        .section-header-tag {
             text-align: center;
             font-size: 0.85rem;
             letter-spacing: 3px;
@@ -157,7 +161,13 @@
             font-weight: 600;
         }
 
-        /* Ventana Estilo UI App (Tarjeta 1) */
+        /* 📸 SECCIÓN IMÁGENES SOFT UI & COLLAGE */
+        .aesthetic-gallery {
+            max-width: 1000px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
         .ui-window-card {
             background: var(--card-white);
             border-radius: var(--radius-ui);
@@ -165,7 +175,6 @@
             box-shadow: 0 15px 35px rgba(156, 178, 201, 0.25);
             border: 2px solid rgba(255, 255, 255, 0.8);
             margin-bottom: 50px;
-            position: relative;
         }
 
         .ui-search-bar {
@@ -178,12 +187,6 @@
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-bottom: 25px;
-        }
-
-        .ui-search-bar .search-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .ui-window-body {
@@ -200,15 +203,10 @@
             border-radius: 16px;
         }
 
-        .ui-window-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
         .ui-badge-container {
             display: flex;
             gap: 8px;
+            margin: 10px 0;
         }
 
         .ui-chip {
@@ -230,11 +228,6 @@
             line-height: 1.6;
         }
 
-        .ui-actions {
-            display: flex;
-            gap: 10px;
-        }
-
         .ui-btn {
             padding: 8px 18px;
             border-radius: 20px;
@@ -242,266 +235,91 @@
             font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
+            margin-top: 15px;
+            background: var(--blue-pastel);
+            color: #fff;
             transition: all 0.2s;
         }
 
-        .ui-btn-primary {
-            background: var(--blue-pastel);
-            color: #fff;
-        }
-
-        .ui-btn-primary:hover {
+        .ui-btn:hover {
             background: var(--blue-ui);
         }
 
-        .ui-btn-soft {
-            background: #e2e8f0;
-            color: var(--text-muted);
+        /* 📖 NUEVA SECCIÓN: PEQUEÑAS HISTORIAS (CARDS ELEGANTES) */
+        .stories-section {
+            max-width: 1000px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
         }
 
-        /* Grid de Estilo Collage / Polaroid (Tarjeta 2) */
-        .collage-container {
-            background: var(--blue-soft);
-            border-radius: 30px;
-            padding: 40px 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .collage-watermark {
-            font-family: 'Alex Brush', cursive;
-            font-size: 4rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-        }
-
-        .polaroid-grid {
+        .stories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 25px;
         }
 
-        .polaroid-item {
-            background: #fff;
-            padding: 12px 12px 20px 12px;
-            border-radius: 14px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            transform: rotate(-1.5deg);
+        .story-card {
+            background: var(--card-white);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(156, 178, 201, 0.15);
+            border: 1px solid #e2e8f0;
+            position: relative;
             transition: transform 0.3s ease;
         }
 
-        .polaroid-item:nth-child(even) {
-            transform: rotate(2deg);
+        .story-card:hover {
+            transform: translateY(-5px);
         }
 
-        .polaroid-item:hover {
-            transform: scale(1.03) rotate(0deg);
-            z-index: 5;
-        }
-
-        .polaroid-item img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .polaroid-caption {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-align: center;
-            margin-top: 10px;
+        .story-tag {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--blue-ui);
             font-weight: 600;
-            letter-spacing: 1px;
         }
 
-        /* ------------------------------------------------------------------ */
+        .story-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.25rem;
+            margin: 10px 0;
+            color: var(--text-dark);
+        }
 
-        /* BLOQUE AZUL EDITORIAL ORIGINAL */
-        .editorial-block {
-            background-color: var(--blue-pastel);
-            position: relative;
-            padding: 80px 20px;
-            margin-bottom: 100px;
-            overflow: hidden;
-            color: #fff;
-            border-radius: 30px;
+        .story-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .story-footer {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.5rem;
+            margin-top: 15px;
+            color: var(--blue-ui);
+            text-align: right;
+        }
+
+        /* ✍️ NUEVA SECCIÓN: ESPACIO DE LECTURA Y ESCRITURA */
+        .writing-section {
             max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 100px;
+            padding: 0 20px;
         }
 
-        .editorial-container {
+        .writing-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(237, 242, 247, 0.7));
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+            border: 2px solid #fff;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 35px;
             align-items: center;
         }
 
-        .image-frame {
-            border: 4px solid #fff;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .image-frame img {
+        .writing-img {
             width: 100%;
-            display: block;
-        }
-
-        .cross-icon {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        .editorial-script {
-            font-family: 'Alex Brush', cursive;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .editorial-p {
-            font-size: 0.85rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        footer p.script-footer {
-            font-family: 'Alex Brush', cursive;
-            font-size: 1.8rem;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section, .ui-window-body, .editorial-container {
-                grid-template-columns: 1fr;
-            }
-            .hero-img-box { text-align: center; margin-top: 25px; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Fondo Animado de Mar -->
-    <div class="sea-background">
-        <div class="wave"></div>
-        <div class="wave wave2"></div>
-    </div>
-
-    <!-- Menú -->
-    <nav>
-        <a href="#">Inicio</a>
-        <a href="#intro">Nosotros</a>
-        <a href="#galeria-soft">Galería Aesthetic</a>
-        <a href="https://www.instagram.com/procesos_lz" target="_blank">Instagram</a>
-    </nav>
-
-    <!-- Sección 1: Introducción -->
-    <section class="hero-section" id="intro">
-        <div>
-            <div class="hero-subtitle">PROCESOS</div>
-            <div>
-                <span class="hero-number">LZ</span>
-                <span class="hero-script">Page.</span>
-            </div>
-            <p class="hero-desc">Pensad en la inmensidad del océano para entender que ,asi de inmenso es cada etapa del alma y lo que conlleva un proceso de fe,vida,amor y amistad.</p>
-        </div>
-        <div class="hero-img-box">
-            <img src="https://www.worldwildlife.org/es/noticias/historias/cuarenta-a%C3%B1os-despu%C3%A9s-de-la-prohibici%C3%B3n-de-la-caza-comercial-de-ballenas-hay-avances-y-trabajo-por-hacer/" alt="BALLENA AZUL">
-        </div>
-    </section>
-
-    <!-- 📸 SECCIÓN DE IMÁGENES ESTILO SOFT AESTHETIC / UI -->
-    <section class="aesthetic-gallery" id="galeria-soft">
-        <div class="gallery-header-tag">• Photo Gallery & Soft Reflections •</div>
-
-        <!-- Tarjeta Estilo Ventana de Búsqueda de App (Basado en la primera imagen) -->
-        <div class="ui-window-card">
-            <div class="ui-search-bar">
-                <div class="search-left">
-                    <span>🔍</span>
-                    <span>Search / Procesos de Fe</span>
-                </div>
-                <span>✖ Cancel</span>
-            </div>
-
-            <div class="ui-window-body">
-                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" class="ui-window-img" alt="Reflexión">
-                
-                <div class="ui-window-info">
-                    <div style="font-family: 'Bodoni Moda', serif; font-size: 1.3rem;">AMOR Y ESPERANZA</div>
-                    <div class="ui-badge-container">
-                        <span class="ui-chip">#2026</span>
-                        <span class="ui-chip">#ProcesosLZ</span>
-                    </div>
-
-                    <div class="ui-text-box">
-                        La fe tiene una manera sutil de acercar a las personas a Dios. Entre momentos de calma, el amor divino aparece sin avisar en gestos simples. Basta con sentir que en medio del proceso, Él es nuestro hogar.
-                    </div>
-
-                    <div class="ui-actions">
-                        <button class="ui-btn ui-btn-primary">Explorar</button>
-                        <button class="ui-btn ui-btn-soft">Leer Más →</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tarjeta Estilo Collage / Polaroid (Basado en la segunda imagen) -->
-        <div class="collage-container">
-            <div class="collage-watermark">My little piece of heaven</div>
-
-            <div class="polaroid-grid">
-                <div class="polaroid-item">
-                    <img src="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=600&q=80" alt="Foto 1">
-                    <div class="polaroid-caption">10281.JPG</div>
-                </div>
-
-                <div class="polaroid-item">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Foto 2">
-                    <div class="polaroid-caption">10282.JPG</div>
-                </div>
-
-                <div class="polaroid-item">
-                    <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=600&q=80" alt="Foto 3">
-                    <div class="polaroid-caption">10283.JPG</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bloque Azul Editorial Original -->
-    <section class="editorial-block">
-        <div class="editorial-container">
-            <div class="image-frame">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Mar pacífico">
-            </div>
-            <div>
-                <span class="cross-icon">✝</span>
-                <div class="editorial-script">História</div>
-                <p class="editorial-p">
-                    En las noches tranquilas cerca del mar, comprendemos que las cosas verdaderas nacen de la paciencia. El Señor moldea nuestra vida a través de aguas calmas.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p class="script-footer">You were blood on snow... my December breath.</p>
-        <p>© PROCESOS LZ · Inspiración & Fe</p>
-    </footer>
-
-</body>
-</html>
+            height: 3
