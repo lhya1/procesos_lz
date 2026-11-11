@@ -77,21 +77,22 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* NAVEGACIÓN */
+        /* NAVEGACIÓN FLOTANTE */
         nav {
             display: flex;
             justify-content: center;
             gap: 25px;
-            padding: 30px 20px;
+            padding: 20px;
             font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
             position: sticky;
             top: 0;
-            background: rgba(237, 242, 247, 0.8);
+            background: rgba(237, 242, 247, 0.85);
             backdrop-filter: blur(10px);
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         nav a {
@@ -104,7 +105,7 @@
             color: var(--blue-ui);
         }
 
-        /* SECCIÓN HERO INTRODUCCIÓN */
+        /* SECCIÓN HERO */
         .hero-section {
             position: relative;
             max-width: 1100px;
@@ -140,7 +141,7 @@
             margin-top: 15px;
         }
 
-        .hero-img-box text-align: right; {
+        .hero-img-box {
             text-align: right;
         }
 
@@ -150,7 +151,7 @@
             box-shadow: 0 10px 25px rgba(156, 178, 201, 0.3);
         }
 
-        /* SECCIÓN GENERAL TITULOS */
+        /* ETIQUETAS DE SECCIÓN */
         .section-header-tag {
             text-align: center;
             font-size: 0.85rem;
@@ -161,7 +162,7 @@
             font-weight: 600;
         }
 
-        /* 📸 SECCIÓN IMÁGENES SOFT UI & COLLAGE */
+        /* 📸 SECCIÓN SOFT UI */
         .aesthetic-gallery {
             max-width: 1000px;
             margin: 0 auto 100px;
@@ -245,7 +246,7 @@
             background: var(--blue-ui);
         }
 
-        /* 📖 NUEVA SECCIÓN: PEQUEÑAS HISTORIAS (CARDS ELEGANTES) */
+        /* 📖 SECCIÓN: HISTORIAS CORTAS */
         .stories-section {
             max-width: 1000px;
             margin: 0 auto 100px;
@@ -254,7 +255,7 @@
 
         .stories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
@@ -301,7 +302,7 @@
             text-align: right;
         }
 
-        /* ✍️ NUEVA SECCIÓN: ESPACIO DE LECTURA Y ESCRITURA */
+        /* ✍️ SECCIÓN: LECTURA Y REFLEXIÓN */
         .writing-section {
             max-width: 1000px;
             margin: 0 auto 100px;
@@ -322,4 +323,288 @@
 
         .writing-img {
             width: 100%;
-            height: 3
+            height: 320px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .writing-content h3 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .writing-content p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        /* 📹 SECCIÓN DE VIDEOS */
+        .videos-section {
+            max-width: 1000px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background: var(--card-white);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 10px 25px rgba(156, 178, 201, 0.15);
+            border: 1px solid #e2e8f0;
+        }
+
+        .video-card video {
+            width: 100%;
+            height: 220px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .video-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.6rem;
+            margin-top: 12px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        /* 🖼️ COLLAGE POLAROID */
+        .collage-container {
+            background: var(--blue-soft);
+            border-radius: 30px;
+            padding: 40px 30px;
+        }
+
+        .collage-watermark {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .polaroid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .polaroid-item {
+            background: #fff;
+            padding: 12px 12px 20px 12px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transform: rotate(-1.5deg);
+        }
+
+        .polaroid-item:nth-child(even) { 
+            transform: rotate(2deg); 
+        }
+
+        .polaroid-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .polaroid-caption {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        footer p.script-footer {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section, .ui-window-body, .writing-box {
+                grid-template-columns: 1fr;
+            }
+            .hero-img-box {
+                text-align: center;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fondo Animado de Mar -->
+    <div class="sea-background">
+        <div class="wave"></div>
+        <div class="wave wave2"></div>
+    </div>
+
+    <!-- Menú de Navegación -->
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#historias">Historias</a>
+        <a href="#reflexion">Reflexiones</a>
+        <a href="#videos">Videos</a>
+        <a href="#galeria">Galería</a>
+        <a href="https://www.instagram.com/procesos_lz" target="_blank">Instagram</a>
+    </nav>
+
+    <!-- 1. Hero Introducción -->
+    <section class="hero-section" data-aos="fade-up">
+        <div>
+            <div class="hero-subtitle">FREEDOM</div>
+            <div>
+                <span class="hero-number">15</span>
+                <span class="hero-script">Howl.</span>
+            </div>
+            <p class="hero-desc">Una pausa en la inmensidad del océano para entender que cada etapa del alma es un proceso de fe.</p>
+        </div>
+        <div class="hero-img-box">
+            <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=600&q=80" alt="Flores acuarela">
+        </div>
+    </section>
+
+    <!-- 2. APARTADO: PEQUEÑAS HISTORIAS -->
+    <section class="stories-section" id="historias">
+        <div class="section-header-tag" data-aos="fade-up">• Pequeñas Historias de Fe •</div>
+        
+        <div class="stories-grid">
+            <div class="story-card" data-aos="fade-up" data-aos-delay="100">
+                <span class="story-tag">Relato 01</span>
+                <h4 class="story-title">El silencio de la orilla</h4>
+                <p class="story-text">A veces Dios no responde con ruidos fuertes, sino con la calma suave del mar al atardecer. En ese silencio, el alma aprende a descansar.</p>
+                <div class="story-footer">Procesos de Paz</div>
+            </div>
+
+            <div class="story-card" data-aos="fade-up" data-aos-delay="200">
+                <span class="story-tag">Relato 02</span>
+                <h4 class="story-title">Tiempos de espera</h4>
+                <p class="story-text">La semilla no florece al día siguiente de ser plantada. Así son los procesos de Dios: invisibles bajo tierra, pero preparándose para dar fruto eterno.</p>
+                <div class="story-footer">Crecimiento</div>
+            </div>
+
+            <div class="story-card" data-aos="fade-up" data-aos-delay="300">
+                <span class="story-tag">Relato 03</span>
+                <h4 class="story-title">Luz en el abismo</h4>
+                <p class="story-text">Aun en las profundidades más oscuras del océano, las medusas brillan con luz propia. Tu fe es esa luz que nada en el mundo puede apagar.</p>
+                <div class="story-footer">Esperanza</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. APARTADO: LECTURA Y ESCRITURA -->
+    <section class="writing-section" id="reflexion">
+        <div class="writing-box" data-aos="zoom-in">
+            <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=600&q=80" class="writing-img" alt="Escritura y mar">
+            <div class="writing-content">
+                <h3>El Arte de Meditar en la Palabra</h3>
+                <p>Escribir lo que Dios habla a nuestro corazón en cada proceso es guardar un tesoro para los días difíciles. Cada nota es un recordatorio de su fidelidad.</p>
+                <p><i>"Guarda estas palabras en tu corazón y medita en ellas de día y de noche."</i></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. APARTADO: VIDEOS -->
+    <section class="videos-section" id="videos">
+        <div class="section-header-tag" data-aos="fade-up">• Videos & Momentos •</div>
+        <div class="video-grid">
+            <div class="video-card" data-aos="fade-up" data-aos-delay="100">
+                <video controls poster="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-calm-ocean-waves-surrounding-a-beach-4008-large.mp4" type="video/mp4">
+                </video>
+                <div class="video-title">Paz junto al mar</div>
+            </div>
+
+            <div class="video-card" data-aos="fade-up" data-aos-delay="200">
+                <video controls poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-starry-sky-in-the-night-41551-large.mp4" type="video/mp4">
+                </video>
+                <div class="video-title">El brillo del cielo</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. APARTADO: GALERÍA SOFT UI Y COLLAGE POLAROID -->
+    <section class="aesthetic-gallery" id="galeria">
+        <div class="section-header-tag" data-aos="fade-up">• Galería & Momentos •</div>
+
+        <!-- Tarjeta Estilo UI App -->
+        <div class="ui-window-card" data-aos="fade-up">
+            <div class="ui-search-bar">
+                <div>🔍 Search / Reflexiones</div>
+                <span>✖ Cancel</span>
+            </div>
+
+            <div class="ui-window-body">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" class="ui-window-img" alt="Reflexión">
+                <div>
+                    <div style="font-family: 'Bodoni Moda', serif; font-size: 1.3rem;">AMOR Y ESPERANZA</div>
+                    <div class="ui-badge-container">
+                        <span class="ui-chip">#2026</span>
+                        <span class="ui-chip">#ProcesosLZ</span>
+                    </div>
+                    <div class="ui-text-box">
+                        La fe tiene una manera sutil de acercar a las personas a Dios. Entre momentos de calma, el amor divino aparece sin avisar en gestos simples.
+                    </div>
+                    <button class="ui-btn">Leer Más →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collage Polaroid -->
+        <div class="collage-container" data-aos="fade-up">
+            <div class="collage-watermark">My little piece of heaven</div>
+
+            <div class="polaroid-grid">
+                <div class="polaroid-item">
+                    <img src="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=600&q=80" alt="Foto 1">
+                    <div class="polaroid-caption">RECUERDOS.JPG</div>
+                </div>
+
+                <div class="polaroid-item">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Foto 2">
+                    <div class="polaroid-caption">INMENSIDAD.JPG</div>
+                </div>
+
+                <div class="polaroid-item">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Foto 3">
+                    <div class="polaroid-caption">CALMA.JPG</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="script-footer">You were blood on snow... my December breath.</p>
+        <p>© PROCESOS LZ · Inspiración & Fe</p>
+    </footer>
+
+    <!-- Script de Inicialización de Transiciones AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
