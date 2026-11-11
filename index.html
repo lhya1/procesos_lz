@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesos LZ | Vida Cristiana & Inmensidad Divina</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #030814;
+            --bg-card: rgba(10, 25, 47, 0.55);
+            --border-glow: rgba(56, 189, 248, 0.25);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent-cyan: #38bdf8;
+            --accent-glow: #00f2fe;
+            --gold-light: #fef08a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background Cosmic Effect */
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(3, 8, 20, 1) 0%, rgba(2, 6, 15, 1) 100%);
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        .ig-btn {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(99, 102, 241, 0.2));
+            border: 1px solid var(--accent-cyan);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .ig-btn:hover {
+            box-shadow: 0 0 15px var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+        }
+
+        .hero-badge {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--accent-cyan), #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+        }
+
+        /* Verse Container */
+        .verse-box {
+            padding: 25px 35px;
+            max-width: 700px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .verse-box::before {
+            content: '“';
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            color: var(--accent-cyan);
+            opacity: 0.3;
+        }
+
+        .verse-text {
+            font-style: italic;
+            font-size: 1.05rem;
+            color: #e2e8f0;
+        }
+
+        .verse-ref {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Concept Cards (Galaxia, Medusa, Ballena) */
+        .concepts {
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .concept-card {
+            padding: 30px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .concept-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .concept-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .concept-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 350px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(3, 8, 20, 0.9), transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .item-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .item-sub {
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars-bg"></div>
+
+    <header class="glass-panel">
+        <div class="logo">PROCESOS LZ</div>
+        <a href="https://www.instagram.com/procesos_lz" target="_blank" class="ig-btn">Ver en Instagram</a>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="hero-badge">Fe • Inmensidad • Crecimiento</span>
+            <h1>Los Tiempos y Procesos de Dios</h1>
+            <p>La vida cristiana no es un destino instantáneo, sino un caminar profundo. Así como la galaxia despliega su gloria y el océano sus profundidades, Dios moldea tu alma en cada etapa.</p>
+
+            <div class="verse-box glass-panel">
+                <p class="verse-text">"Él ha hecho todo hermoso en su tiempo; y ha puesto eternidad en el corazón de ellos..."</p>
+                <span class="verse-ref">Eclesiastés 3:11</span>
+            </div>
+        </section>
+
+        <!-- Simbolismos / Conceptos -->
+        <section class="concepts">
+            <div class="concept-card glass-panel">
+                <span class="concept-icon">🌌</span>
+                <h3>La Galaxia</h3>
+                <p>Representa la grandeza incalculable del Creador. Tu proceso está escrito en un diseño cósmico perfecto que trasciende tu entendimiento actual.</p>
+            </div>
+            <div class="concept-card glass-panel">
+                <span class="concept-icon">🐋</span>
+                <h3>La Ballena</h3>
+                <p>Simboliza la calma en las profundidades, la paciencia en la tormenta y la capacidad de sumergirse hondo en la presencia de Dios para emerger renovado.</p>
+            </div>
+            <div class="concept-card glass-panel">
+                <span class="concept-icon">🪼</span>
+                <h3>La Medusa</h3>
+                <p>Representa la luz propia en medio de la oscuridad abisal y la entrega total para dejarte llevar por la corriente del Espíritu Santo.</p>
+            </div>
+        </section>
+
+        <!-- Galería de Galaxia, Fe y Mar -->
+        <section class="gallery-section">
+            <h2 class="section-title">Galería de Reflexiones</h2>
+            <div class="gallery-grid">
+                <!-- Reemplaza la propiedad style="background-image: url('URL_DE_TU_FOTO');" por tus imágenes reales de Instagram -->
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=800&q=80');">
+                    <div class="item-overlay">
+                        <span class="item-sub">Proceso de Luz</span>
+                        <h4 class="item-title">Brillando en el Abismo</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80');">
+                    <div class="item-overlay">
+                        <span class="item-sub">Profundidad</span>
+                        <h4 class="item-title">Paciencia en el Océano de Dios</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80');">
+                    <div class="item-overlay">
+                        <span class="item-sub">Eternidad</span>
+                        <h4 class="item-title">Diseño Cósmico</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© Procesos LZ. Creado para reflexionar en la Palabra de Dios. Síguenos en <a href="https://www.instagram.com/procesos_lz" target="_blank">@procesos_lz</a></p>
+    </footer>
+
+</body>
+</html>
