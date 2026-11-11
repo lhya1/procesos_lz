@@ -43,7 +43,7 @@
             line-height: 1.6;
         }
 
-        /* 🌊 FONDO DE MAR + MEDUSA BLANCA AESTHETIC */
+        /* 🌊 FONDO DE MAR + MULTIPLES MEDUSAS AESTHETIC */
         .sea-background {
             position: fixed;
             top: 0;
@@ -78,32 +78,82 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* 🪼 MEDUSA BLANCA GRANDE Y AESTHETIC EN EL FONDO */
+        /* 🪼 MEDUSAS BLANCAS Y AESTHETIC EN EL FONDO */
         .jellyfish-container {
             position: absolute;
-            top: 10%;
-            right: 3%;
-            width: 450px;
-            height: 650px;
+            pointer-events: none;
+        }
+
+        /* Medusa 1: Principal Grande Derecha */
+        .jelly-1 {
+            top: 8%;
+            right: 2%;
+            width: 420px;
+            height: 600px;
             opacity: 0.65;
-            filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 15px rgba(156, 178, 201, 0.5));
-            animation: floatJelly 10s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 15px rgba(156, 178, 201, 0.5));
+            animation: floatJelly1 11s ease-in-out infinite alternate;
         }
 
-        /* Movimiento de pulsación y nado orgánico de la medusa */
-        @keyframes floatJelly {
-            0% {
-                transform: translateY(0px) rotate(0deg) scale(1);
-            }
-            50% {
-                transform: translateY(-50px) rotate(-4deg) scale(1.04);
-            }
-            100% {
-                transform: translateY(-90px) rotate(3deg) scale(0.97);
-            }
+        /* Medusa 2: Mediana Izquierda Superior */
+        .jelly-2 {
+            top: 15%;
+            left: 3%;
+            width: 260px;
+            height: 400px;
+            opacity: 0.55;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 10px rgba(186, 204, 219, 0.6));
+            animation: floatJelly2 14s ease-in-out infinite alternate;
         }
 
-        /* Animación de pulsación de la cabeza de la medusa */
+        /* Medusa 3: Pequeña Centro/Izquierda */
+        .jelly-3 {
+            top: 52%;
+            left: 18%;
+            width: 190px;
+            height: 300px;
+            opacity: 0.5;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 8px rgba(147, 197, 253, 0.5));
+            animation: floatJelly3 9s ease-in-out infinite alternate;
+        }
+
+        /* Medusa 4: Mediana-Baja Derecha */
+        .jelly-4 {
+            top: 48%;
+            right: 12%;
+            width: 240px;
+            height: 380px;
+            opacity: 0.55;
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.85)) drop-shadow(0 0 12px rgba(196, 181, 253, 0.4));
+            animation: floatJelly4 13s ease-in-out infinite alternate;
+        }
+
+        /* Movimientos de flotación independientes */
+        @keyframes floatJelly1 {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-45px) rotate(-4deg) scale(1.03); }
+            100% { transform: translateY(-85px) rotate(3deg) scale(0.97); }
+        }
+
+        @keyframes floatJelly2 {
+            0% { transform: translateY(0px) rotate(0deg) scale(0.98); }
+            50% { transform: translateY(-35px) rotate(5deg) scale(1.04); }
+            100% { transform: translateY(-70px) rotate(-3deg) scale(1); }
+        }
+
+        @keyframes floatJelly3 {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-25px) rotate(-6deg) scale(1.05); }
+            100% { transform: translateY(-50px) rotate(4deg) scale(0.95); }
+        }
+
+        @keyframes floatJelly4 {
+            0% { transform: translateY(0px) rotate(0deg) scale(0.95); }
+            50% { transform: translateY(-40px) rotate(4deg) scale(1.02); }
+            100% { transform: translateY(-75px) rotate(-5deg) scale(0.98); }
+        }
+
+        /* Animación de pulsación de la sombrilla */
         .jelly-head {
             transform-origin: center top;
             animation: jellyPulse 4s ease-in-out infinite alternate;
@@ -111,41 +161,42 @@
 
         @keyframes jellyPulse {
             0% { transform: scaleX(1) scaleY(1); }
-            50% { transform: scaleX(1.08) scaleY(0.92); }
+            50% { transform: scaleX(1.07) scaleY(0.93); }
             100% { transform: scaleX(0.96) scaleY(1.04); }
         }
 
         /* Tentáculos ondulantes */
         .tentacle {
             transform-origin: center top;
-            animation: tentacleWiggle 6s ease-in-out infinite alternate;
+            animation: tentacleWiggle 5s ease-in-out infinite alternate;
         }
 
-        .t-2 { animation-delay: 1s; }
-        .t-3 { animation-delay: 2s; }
-        .t-4 { animation-delay: 1.5s; }
+        .t-2 { animation-delay: 0.8s; }
+        .t-3 { animation-delay: 1.6s; }
+        .t-4 { animation-delay: 1.2s; }
 
         @keyframes tentacleWiggle {
             0% { transform: rotate(0deg) skewX(0deg); }
-            50% { transform: rotate(3deg) skewX(4deg); }
-            100% { transform: rotate(-3deg) skewX(-4deg); }
+            50% { transform: rotate(4deg) skewX(3deg); }
+            100% { transform: rotate(-4deg) skewX(-3deg); }
         }
 
-        /* Partículas / destellos de luz flotantes */
+        /* Partículas y destellos */
         .jelly-sparkle {
             position: absolute;
             border-radius: 50%;
             background: #ffffff;
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
-            animation: sparkleFade 3s ease-in-out infinite alternate;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+            animation: sparkleFade 3.5s ease-in-out infinite alternate;
         }
 
-        .s1 { top: 25%; right: 25%; width: 7px; height: 7px; animation-delay: 0s; }
-        .s2 { top: 50%; right: 15%; width: 9px; height: 9px; animation-delay: 1.2s; }
-        .s3 { top: 70%; right: 30%; width: 6px; height: 6px; animation-delay: 2.5s; }
+        .s1 { top: 20%; right: 20%; width: 6px; height: 6px; animation-delay: 0s; }
+        .s2 { top: 35%; left: 15%; width: 8px; height: 8px; animation-delay: 1s; }
+        .s3 { top: 65%; left: 25%; width: 5px; height: 5px; animation-delay: 2s; }
+        .s4 { top: 75%; right: 18%; width: 7px; height: 7px; animation-delay: 1.5s; }
 
         @keyframes sparkleFade {
-            0% { opacity: 0.3; transform: scale(0.8); }
+            0% { opacity: 0.2; transform: scale(0.8); }
             100% { opacity: 1; transform: scale(1.4); }
         }
 
@@ -785,74 +836,111 @@
             .letter-watermark-title {
                 font-size: 3.2rem;
             }
-            .jellyfish-container {
-                width: 300px;
-                height: 480px;
-                right: -20px;
-            }
+            .jelly-1 { width: 280px; height: 440px; right: -30px; }
+            .jelly-2 { width: 180px; height: 300px; left: -20px; }
+            .jelly-3 { display: none; }
+            .jelly-4 { width: 170px; height: 280px; right: -10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 🌊 Fondo Animado con Olas del Mar + 🪼 Medusa Blanca Aesthetic -->
+    <!-- 🌊 Fondo Animado con Olas del Mar + 🪼 4 Medusas Blancas & Soft Aesthetic -->
     <div class="sea-background">
         
         <!-- Olas Animadas del Mar -->
         <div class="wave"></div>
         <div class="wave wave2"></div>
 
-        <!-- Medusa Blanca Grande y Flotante -->
-        <div class="jellyfish-container">
+        <!-- 🪼 MEDUSA 1: Grande Principal Derecha -->
+        <div class="jellyfish-container jelly-1">
             <svg viewBox="0 0 350 600" width="100%" height="100%">
                 <defs>
-                    <!-- Degradado Blanco Luminoso / Soft UI -->
-                    <radialGradient id="whiteJellyGlow" cx="50%" cy="30%" r="55%">
+                    <radialGradient id="whiteJellyGlow1" cx="50%" cy="30%" r="55%">
                         <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
                         <stop offset="40%" stop-color="#e0f2fe" stop-opacity="0.75"/>
                         <stop offset="80%" stop-color="#bae6fd" stop-opacity="0.3"/>
                         <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0"/>
                     </radialGradient>
-
-                    <linearGradient id="whiteTentacle" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <linearGradient id="whiteTentacle1" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
                         <stop offset="50%" stop-color="#e2e8f0" stop-opacity="0.5"/>
                         <stop offset="100%" stop-color="#cbd5e1" stop-opacity="0.05"/>
                     </linearGradient>
                 </defs>
-
-                <!-- Cabeza de la Medusa (Sombrilla con Pulsación) -->
                 <g class="jelly-head">
-                    <path d="M 60 180 C 60 40, 290 40, 290 180 C 260 205, 230 175, 175 190 C 120 205, 90 175, 60 180 Z" 
-                          fill="url(#whiteJellyGlow)" stroke="rgba(255,255,255,0.9)" stroke-width="2.5"/>
-                    <!-- Crestas/Brillo Interior -->
+                    <path d="M 60 180 C 60 40, 290 40, 290 180 C 260 205, 230 175, 175 190 C 120 205, 90 175, 60 180 Z" fill="url(#whiteJellyGlow1)" stroke="rgba(255,255,255,0.9)" stroke-width="2.5"/>
                     <path d="M 90 150 C 120 80, 230 80, 260 150" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
-                    <path d="M 120 165 C 145 110, 205 110, 230 165" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
                 </g>
-
-                <!-- Tentáculos Blancos Flotantes -->
-                <g class="tentacle t-1">
-                    <path d="M 90 185 Q 60 300, 110 420 T 80 580" fill="none" stroke="url(#whiteTentacle)" stroke-width="4"/>
-                </g>
-                <g class="tentacle t-2">
-                    <path d="M 130 195 Q 170 330, 120 440 T 150 590" fill="none" stroke="url(#whiteTentacle)" stroke-width="5"/>
-                </g>
-                <g class="tentacle t-3">
-                    <path d="M 175 200 Q 140 340, 190 460 T 175 600" fill="none" stroke="url(#whiteTentacle)" stroke-width="6"/>
-                </g>
-                <g class="tentacle t-4">
-                    <path d="M 220 195 Q 250 320, 200 430 T 235 580" fill="none" stroke="url(#whiteTentacle)" stroke-width="5"/>
-                </g>
-                <g class="tentacle t-1">
-                    <path d="M 260 185 Q 290 290, 250 410 T 275 570" fill="none" stroke="url(#whiteTentacle)" stroke-width="4"/>
-                </g>
+                <g class="tentacle t-1"><path d="M 90 185 Q 60 300, 110 420 T 80 580" fill="none" stroke="url(#whiteTentacle1)" stroke-width="4"/></g>
+                <g class="tentacle t-2"><path d="M 130 195 Q 170 330, 120 440 T 150 590" fill="none" stroke="url(#whiteTentacle1)" stroke-width="5"/></g>
+                <g class="tentacle t-3"><path d="M 175 200 Q 140 340, 190 460 T 175 600" fill="none" stroke="url(#whiteTentacle1)" stroke-width="6"/></g>
+                <g class="tentacle t-4"><path d="M 220 195 Q 250 320, 200 430 T 235 580" fill="none" stroke="url(#whiteTentacle1)" stroke-width="5"/></g>
             </svg>
         </div>
 
-        <!-- Destellos Blancos Flotantes alrededor de la Medusa -->
+        <!-- 🪼 MEDUSA 2: Mediana Izquierda Superior -->
+        <div class="jellyfish-container jelly-2">
+            <svg viewBox="0 0 350 600" width="100%" height="100%">
+                <defs>
+                    <radialGradient id="whiteJellyGlow2" cx="50%" cy="30%" r="55%">
+                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+                        <stop offset="50%" stop-color="#f1f5f9" stop-opacity="0.7"/>
+                        <stop offset="100%" stop-color="#93c5fd" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <g class="jelly-head">
+                    <path d="M 70 170 C 70 50, 280 50, 280 170 C 250 190, 220 165, 175 180 C 130 195, 100 165, 70 170 Z" fill="url(#whiteJellyGlow2)" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+                </g>
+                <g class="tentacle t-2"><path d="M 100 175 Q 80 290, 120 400 T 90 560" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3.5"/></g>
+                <g class="tentacle t-3"><path d="M 175 185 Q 140 310, 180 430 T 170 580" fill="none" stroke="url(#whiteTentacle1)" stroke-width="4.5"/></g>
+                <g class="tentacle t-1"><path d="M 250 175 Q 270 280, 230 390 T 250 550" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3.5"/></g>
+            </svg>
+        </div>
+
+        <!-- 🪼 MEDUSA 3: Pequeña Centro/Izquierda (Azul Soft) -->
+        <div class="jellyfish-container jelly-3">
+            <svg viewBox="0 0 350 600" width="100%" height="100%">
+                <defs>
+                    <radialGradient id="blueJellyGlow3" cx="50%" cy="30%" r="55%">
+                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+                        <stop offset="60%" stop-color="#bae6fd" stop-opacity="0.65"/>
+                        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <g class="jelly-head">
+                    <path d="M 80 160 C 80 60, 270 60, 270 160 C 240 180, 210 160, 175 170 C 140 180, 110 160, 80 160 Z" fill="url(#blueJellyGlow3)" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
+                </g>
+                <g class="tentacle t-4"><path d="M 110 165 Q 90 270, 130 380 T 110 540" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3"/></g>
+                <g class="tentacle t-1"><path d="M 175 175 Q 150 290, 185 410 T 175 560" fill="none" stroke="url(#whiteTentacle1)" stroke-width="4"/></g>
+                <g class="tentacle t-2"><path d="M 240 165 Q 260 270, 220 370 T 240 530" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3"/></g>
+            </svg>
+        </div>
+
+        <!-- 🪼 MEDUSA 4: Mediana-Baja Derecha (Toque Violeta Soft) -->
+        <div class="jellyfish-container jelly-4">
+            <svg viewBox="0 0 350 600" width="100%" height="100%">
+                <defs>
+                    <radialGradient id="violetJellyGlow4" cx="50%" cy="30%" r="55%">
+                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+                        <stop offset="55%" stop-color="#ddd6fe" stop-opacity="0.6"/>
+                        <stop offset="100%" stop-color="#c4b5fd" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <g class="jelly-head">
+                    <path d="M 75 165 C 75 55, 275 55, 275 165 C 245 185, 215 160, 175 175 C 135 185, 105 160, 75 165 Z" fill="url(#violetJellyGlow4)" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+                </g>
+                <g class="tentacle t-3"><path d="M 105 170 Q 80 280, 125 390 T 100 550" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3.5"/></g>
+                <g class="tentacle t-2"><path d="M 175 180 Q 145 300, 180 420 T 170 570" fill="none" stroke="url(#whiteTentacle1)" stroke-width="4.5"/></g>
+                <g class="tentacle t-4"><path d="M 245 170 Q 270 280, 225 380 T 245 540" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3.5"/></g>
+            </svg>
+        </div>
+
+        <!-- Destellos Blancos Flotantes -->
         <div class="jelly-sparkle s1"></div>
         <div class="jelly-sparkle s2"></div>
         <div class="jelly-sparkle s3"></div>
+        <div class="jelly-sparkle s4"></div>
     </div>
 
     <!-- Menú de Navegación -->
