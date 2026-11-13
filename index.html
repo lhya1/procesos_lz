@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Fredoka:wght@500;600;700&family=Montserrat:wght@400;600;700;800&family=Pacifico&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
     <!-- Librería AOS para efectos de transición al deslizar -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -17,6 +17,8 @@
         :root {
             --bg-light: #f3f0ff;
             --celeste-pastel: #bae6fd;
+            --celeste-ui: #7cc4fa;
+            --celeste-deep: #4da3e8;
             --celeste-vivo: #0ea5e9;
             --morado-pastel: #ddd6fe;
             --morado-vivo: #8b5cf6;
@@ -24,7 +26,7 @@
             --soft-gradient: linear-gradient(135deg, #e0f2fe 0%, #f3e8ff 100%);
             --text-dark: #2e244d;
             --text-muted: #645c84;
-            --card-white: rgba(255, 255, 255, 0.88);
+            --card-white: rgba(255, 255, 255, 0.9);
             --radius-ui: 24px;
         }
 
@@ -55,7 +57,7 @@
             height: 100vh;
             pointer-events: none;
             z-index: -1;
-            background: linear-gradient(180deg, #f0f9ff 0%, #e0e7ff 45%, #ede9fe 80%, #ddd6fe 100%);
+            background: linear-gradient(180deg, #eef8ff 0%, #e0e7ff 45%, #ede9fe 80%, #ddd6fe 100%);
             overflow: hidden;
         }
 
@@ -75,14 +77,14 @@
             left: 0;
             width: 200%;
             height: 280px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C150,90 350,-40 500,40 C650,120 900,20 1200,60 L1200,120 L0,120 Z" fill="rgba(168, 85, 247, 0.16)"></path></svg>') repeat-x;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C150,90 350,-40 500,40 C650,120 900,20 1200,60 L1200,120 L0,120 Z" fill="rgba(168, 85, 247, 0.14)"></path></svg>') repeat-x;
             animation: waveMove 18s linear infinite;
             z-index: 2;
         }
 
         .wave.wave2 {
             bottom: -30px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C200,40 400,10 600,50 C800,90 1000,30 1200,80 L1200,120 L0,120 Z" fill="rgba(56, 189, 248, 0.22)"></path></svg>') repeat-x;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C200,40 400,10 600,50 C800,90 1000,30 1200,80 L1200,120 L0,120 Z" fill="rgba(56, 189, 248, 0.2)"></path></svg>') repeat-x;
             animation: waveMove 12s linear infinite reverse;
             z-index: 3;
         }
@@ -92,89 +94,581 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* NAVEGACIÓN FLOTANTE */
-        nav {
+        /* ==========================================================================
+           🩵 NUEVO INICIO ESTILO ANIME WEB-UI CARD (BASADO EN TU DISEÑO)
+           ========================================================================== */
+        .web-hero-wrapper {
+            max-width: 1180px;
+            margin: 25px auto 95px;
+            padding: 0 18px;
+        }
+
+        .web-window-frame {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(224, 242, 254, 0.82) 55%, rgba(237, 233, 254, 0.82) 100%);
+            border-radius: 26px;
+            border: 3px solid #ffffff;
+            box-shadow: 0 20px 50px rgba(96, 165, 250, 0.22), 0 8px 25px rgba(139, 92, 246, 0.15);
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Barra Superior Estilo Navegador Web */
+        .web-topbar {
+            background: linear-gradient(90deg, #7cc4fa 0%, #93c5fd 55%, #a5b4fc 100%);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .web-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .web-nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            transition: all 0.25s ease;
+            text-shadow: 0 1px 4px rgba(30, 64, 175, 0.2);
+        }
+
+        .web-nav-links a.active,
+        .web-nav-links a:hover {
+            background: #ffffff;
+            color: var(--celeste-deep);
+            text-shadow: none;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
+        }
+
+        .web-topbar-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-pill-status {
+            background: #ffffff;
+            color: var(--celeste-deep);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .top-close-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: var(--celeste-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        /* Cuerpo Principal del Hero Canvas */
+        .web-hero-body {
+            position: relative;
+            padding: 26px 28px 32px;
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 20px;
+            min-height: 540px;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(186, 230, 253, 0.5) 0%, transparent 45%),
+                radial-gradient(circle at 80% 75%, rgba(221, 214, 254, 0.5) 0%, transparent 50%),
+                linear-gradient(rgba(147, 197, 253, 0.14) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(147, 197, 253, 0.14) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+        }
+
+        /* Número decorativo gigante de fondo "02" */
+        .bg-giant-number {
+            position: absolute;
+            right: 2%;
+            top: 42%;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 10rem;
+            font-weight: 700;
+            color: rgba(125, 211, 252, 0.25);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+        }
+
+        /* Columna Izquierda: Widgets + Título Glossy */
+        .hero-ui-left {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        /* Fila Superior de Widgets */
+        .ui-top-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        /* Widget Tarjeta "CARD" */
+        .id-mini-card {
+            background: linear-gradient(135deg, #7cc4fa 0%, #93c5fd 100%);
+            border-radius: 16px;
+            padding: 10px 14px;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            box-shadow: 0 8px 20px rgba(96, 165, 250, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 215px;
+        }
+
+        .id-mini-badges {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .id-mini-badges span {
+            background: #ffffff;
+            color: var(--celeste-deep);
+            font-size: 0.58rem;
+            font-weight: 800;
+            padding: 1px 6px;
+            border-radius: 8px;
+        }
+
+        .id-mini-card h4 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .id-mini-card p {
+            font-size: 0.62rem;
+            opacity: 0.9;
+        }
+
+        .id-mini-avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            border: 2.5px solid #ffffff;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Píldoras centrales ("CALL ME...", "Thanks for...") */
+        .ui-center-pills {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .pill-title-tag {
+            background: #ffffff;
+            border: 2px solid #93c5fd;
+            color: var(--celeste-deep);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 5px 18px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(147, 197, 253, 0.25);
+        }
+
+        .pill-sub-tag {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1.5px solid #bae6fd;
+            color: var(--text-muted);
+            font-size: 0.74rem;
+            font-weight: 600;
+            padding: 4px 16px;
+            border-radius: 20px;
+            margin-left: 14px;
+        }
+
+        /* Placa Superior Derecha ("PROCESOS LZ") */
+        .ui-nameplate-box {
+            background: rgba(255, 255, 255, 0.92);
+            border: 2px solid #93c5fd;
+            border-radius: 16px;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 16px rgba(125, 211, 252, 0.22);
+            margin-left: auto;
+        }
+
+        .nameplate-tag {
+            background: #7cc4fa;
+            color: #ffffff;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 2px;
+        }
+
+        .nameplate-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.15rem;
+            color: var(--celeste-deep);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .nameplate-sub {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .nameplate-thumb {
+            width: 48px;
+            height: 54px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1.5px solid #bae6fd;
+        }
+
+        /* Fila Central: Botones laterales + Título Cursivo Gigante Glossy */
+        .ui-middle-row {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin: 5px 0;
+        }
+
+        .side-quick-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quick-pill-btn {
+            background: #ffffff;
+            border: 2px solid #93c5fd;
+            color: var(--celeste-deep);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 16px;
+            border-radius: 18px;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(147, 197, 253, 0.2);
+            transition: all 0.25s;
+        }
+
+        .quick-pill-btn:hover {
+            background: var(--celeste-ui);
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        .glossy-title-container {
+            position: relative;
+            padding: 5px 10px;
+        }
+
+        /* Título cursivo estilo bubble / glossy celeste */
+        .glossy-script-title {
+            font-family: 'Pacifico', 'Alex Brush', cursive;
+            font-size: 4.6rem;
+            line-height: 1.05;
+            background: linear-gradient(180deg, #a5d8ff 0%, #5bb2f5 55%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 2px #ffffff) drop-shadow(0 6px 14px rgba(96, 165, 250, 0.35));
+            user-select: none;
+        }
+
+        .glossy-ribbon-tag {
+            display: inline-block;
+            background: linear-gradient(90deg, #7cc4fa, #a78bfa);
+            color: #ffffff;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 22px;
+            border-radius: 6px;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            box-shadow: 0 4px 12px rgba(124, 196, 250, 0.35);
+            border: 1.5px solid #ffffff;
+        }
+
+        /* Sticker circular junto al título */
+        .chibi-sticker-badge {
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            background: #ffffff;
+            padding: 4px;
+            box-shadow: 0 8px 20px rgba(96, 165, 250, 0.28);
+            border: 2px solid #bae6fd;
+            flex-shrink: 0;
+            animation: floatSticker 4s ease-in-out infinite alternate;
+        }
+
+        .chibi-sticker-badge img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        @keyframes floatSticker {
+            0% { transform: translateY(0px) rotate(-3deg); }
+            100% { transform: translateY(-8px) rotate(4deg); }
+        }
+
+        /* Fila Inferior de Widgets */
+        .ui-bottom-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Widget circular "0.6 / 2.0" */
+        .circle-stat-widget {
+            position: relative;
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            background: #ffffff;
+            padding: 4px;
+            border: 2.5px solid #7cc4fa;
+            box-shadow: 0 6px 15px rgba(124, 196, 250, 0.25);
+        }
+
+        .circle-stat-widget img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .stat-pill-top {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: #7cc4fa;
+            color: #ffffff;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 10px;
+            border: 1.5px solid #ffffff;
+        }
+
+        .stat-pill-bottom {
+            position: absolute;
+            bottom: -6px;
+            right: -6px;
+            background: #a78bfa;
+            color: #ffffff;
+            font-size: 0.62rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 10px;
+            border: 1.5px solid #ffffff;
+        }
+
+        /* Tarjeta Ficha Inferior Izquierda ("FREEDOM / 2026") */
+        .freedom-spec-card {
+            background: linear-gradient(135deg, #8ecae6 0%, #93c5fd 100%);
+            border-radius: 18px;
+            padding: 12px 16px;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            box-shadow: 0 8px 20px rgba(96, 165, 250, 0.22);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .spec-tag-mini {
+            background: #ffffff;
+            color: var(--celeste-deep);
+            font-size: 0.6rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .spec-main-word {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .spec-sub-word {
+            font-size: 0.7rem;
+            opacity: 0.92;
+        }
+
+        .spec-year-stack {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 0.95;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 6px 8px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Widget "Color Styles" */
+        .color-styles-widget {
+            background: rgba(255, 255, 255, 0.92);
+            border: 2px solid #bae6fd;
+            border-radius: 16px;
+            padding: 10px 14px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(147, 197, 253, 0.18);
+        }
+
+        .color-styles-label {
+            background: #7cc4fa;
+            color: #ffffff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .color-dots-row {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 25px;
-            padding: 18px 20px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
-            position: sticky;
-            top: 0;
-            background: rgba(243, 240, 255, 0.82);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-            border-bottom: 1px solid rgba(196, 181, 253, 0.5);
+            gap: 8px;
         }
 
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: all 0.3s;
+        .color-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        nav a:hover {
-            color: var(--morado-vivo);
-            text-shadow: 0 0 12px rgba(139, 92, 246, 0.35);
-        }
-
-        /* SECCIÓN HERO */
-        .hero-section {
+        /* Columna Derecha: Personaje / Imagen Protagonista + Tarjeta Flotante Inferior */
+        .hero-ui-right {
             position: relative;
-            max-width: 1100px;
-            margin: 40px auto 80px;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
             align-items: center;
         }
 
-        .hero-subtitle {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 2.6rem;
-            letter-spacing: 5px;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-character-frame {
+            position: relative;
+            width: 100%;
+            max-width: 360px;
+            height: 440px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
         }
 
-        .hero-number {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 3.6rem;
-            display: inline-block;
-            margin-right: 15px;
-            color: var(--text-dark);
-        }
-
-        .hero-script {
-            font-family: 'Alex Brush', cursive;
-            font-size: 2.5rem;
-            color: var(--morado-vivo);
-        }
-
-        .hero-desc {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            max-width: 340px;
-            margin-top: 15px;
-        }
-
-        .hero-img-box {
-            text-align: right;
-        }
-
-        .hero-img-box img {
-            max-width: 80%;
-            border-radius: var(--radius-ui);
+        .hero-character-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
             border: 3px solid #ffffff;
-            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.25), 0 5px 15px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 15px 35px rgba(96, 165, 250, 0.28);
         }
 
-        /* 🩵💜 SECCIÓN ESTILO CORAZÓN / SOFT LAYOUT */
+        /* Tarjeta Flotante Inferior Derecha ("# PROCESOS LZ") */
+        .floating-bottom-badge {
+            position: absolute;
+            bottom: -10px;
+            right: -8px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(224, 242, 254, 0.95));
+            border: 2.5px solid #7cc4fa;
+            border-radius: 18px;
+            padding: 10px 14px;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 240px;
+        }
+
+        .floating-bottom-badge img {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid #bae6fd;
+        }
+
+        .floating-badge-tag {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--celeste-deep);
+            background: #e0f2fe;
+            padding: 2px 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        /* Estrellitas decorativas flotantes */
+        .deco-star {
+            position: absolute;
+            font-size: 1.5rem;
+            pointer-events: none;
+            animation: twinkleStar 3s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes twinkleStar {
+            0% { transform: scale(0.9) rotate(-8deg); opacity: 0.75; }
+            100% { transform: scale(1.15) rotate(8deg); opacity: 1; }
+        }
+
+        /* ==========================================================================
+           RESTO DE SECCIONES DE TU PÁGINA
+           ========================================================================== */
         .soft-profile-section {
             max-width: 1100px;
             margin: 0 auto 100px;
@@ -304,10 +798,6 @@
             letter-spacing: 6px;
         }
 
-        .soft-main-photo {
-            position: relative;
-        }
-
         .soft-main-photo img {
             width: 100%;
             height: 480px;
@@ -317,7 +807,6 @@
             border: 4px solid #fff;
         }
 
-        /* ETIQUETAS DE SECCIÓN */
         .section-header-tag {
             text-align: center;
             font-size: 0.88rem;
@@ -330,7 +819,7 @@
             font-weight: 700;
         }
 
-        /* 📸 SECCIÓN SOFT UI GALERÍA */
+        /* Galería Soft UI */
         .aesthetic-gallery {
             max-width: 1000px;
             margin: 0 auto 100px;
@@ -418,7 +907,7 @@
             box-shadow: 0 8px 20px rgba(56, 189, 248, 0.35);
         }
 
-        /* 📖 SECCIÓN: HISTORIAS CORTAS */
+        /* Historias Cortas */
         .stories-section {
             max-width: 1000px;
             margin: 0 auto 100px;
@@ -476,7 +965,7 @@
             text-align: right;
         }
 
-        /* ✍️ SECCIÓN: LECTURA Y REFLEXIÓN */
+        /* Lectura y Reflexión */
         .writing-section {
             max-width: 1000px;
             margin: 0 auto 100px;
@@ -517,7 +1006,7 @@
             margin-bottom: 15px;
         }
 
-        /* 📹 SECCIÓN DE VIDEOS */
+        /* Videos */
         .videos-section {
             max-width: 1000px;
             margin: 0 auto 100px;
@@ -554,7 +1043,7 @@
             color: var(--morado-vivo);
         }
 
-        /* 🖼️ COLLAGE POLAROID */
+        /* Collage Polaroid */
         .collage-container {
             background: linear-gradient(135deg, rgba(186, 230, 253, 0.85) 0%, rgba(221, 214, 254, 0.85) 50%, rgba(233, 213, 255, 0.85) 100%);
             border-radius: 30px;
@@ -614,7 +1103,7 @@
             font-weight: 700;
         }
 
-        /* ✉️ SECCIÓN: SOBRE EDITORIAL VINTAGE */
+        /* Sobre Editorial Vintage */
         .envelope-section {
             max-width: 900px;
             margin: 0 auto 120px;
@@ -738,7 +1227,6 @@
             pointer-events: none;
         }
 
-        /* FOOTER */
         footer {
             text-align: center;
             padding: 50px 20px;
@@ -755,13 +1243,26 @@
             margin-bottom: 8px;
         }
 
-        @media (max-width: 768px) {
-            .hero-section, .soft-profile-grid, .soft-widgets-container, .ui-window-body, .writing-box, .letter-grid-content {
+        @media (max-width: 900px) {
+            .web-hero-body {
                 grid-template-columns: 1fr;
             }
-            .hero-img-box {
-                text-align: center;
+            .glossy-script-title {
+                font-size: 3.4rem;
+            }
+            .hero-character-frame {
+                max-width: 300px;
+                height: 360px;
                 margin-top: 20px;
+            }
+            .ui-nameplate-box {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .soft-profile-grid, .soft-widgets-container, .ui-window-body, .writing-box, .letter-grid-content {
+                grid-template-columns: 1fr;
             }
             .soft-card-quote, .heart-icon-divider {
                 grid-column: span 1;
@@ -781,32 +1282,144 @@
         <div class="wave wave2"></div>
     </div>
 
-    <!-- Menú de Navegación -->
-    <nav>
-        <a href="#">Inicio</a>
-        <a href="#soft-profile">Perfil Soft</a>
-        <a href="#historias">Historias</a>
-        <a href="#reflexion">Reflexiones</a>
-        <a href="#videos">Videos</a>
-        <a href="#galeria">Galería</a>
-        <a href="#secrets-envelope">Secretos</a>
-        <a href="https://www.instagram.com/procesos_lz" target="_blank">Instagram</a>
-    </nav>
-
-    <!-- 1. Hero Introducción -->
-    <section class="hero-section" data-aos="fade-up">
-        <div>
-            <div class="hero-subtitle">FREEDOM</div>
-            <div>
-                <span class="hero-number">15</span>
-                <span class="hero-script">Howl.</span>
+    <!-- 🩵 1. NUEVO INICIO ESTILO ANIME WEB-UI CARD -->
+    <header class="web-hero-wrapper" data-aos="fade-up">
+        <div class="web-window-frame">
+            
+            <!-- Barra Superior Estilo Navegador -->
+            <div class="web-topbar">
+                <nav class="web-nav-links">
+                    <a href="#" class="active">Inicio</a>
+                    <a href="#soft-profile">Homepage</a>
+                    <a href="#galeria">Galery</a>
+                    <a href="#historias">Historias</a>
+                    <a href="#secrets-envelope">Secretos</a>
+                    <a href="https://www.instagram.com/procesos_lz" target="_blank">Instagram</a>
+                </nav>
+                <div class="web-topbar-controls">
+                    <div class="top-pill-status">📷 Soft UI · On</div>
+                    <div class="top-close-btn">✕</div>
+                </div>
             </div>
-            <p class="hero-desc">Una pausa en la inmensidad del océano para entender que cada etapa del alma es un proceso de fe.</p>
+
+            <!-- Cuerpo Principal con Widgets Flotantes y Personaje -->
+            <div class="web-hero-body">
+                
+                <!-- Número gigante decorativo de fondo -->
+                <div class="bg-giant-number">02</div>
+
+                <!-- Estrellitas decorativas -->
+                <span class="deco-star" style="top: 18%; left: 45%;">⭐</span>
+                <span class="deco-star" style="bottom: 14%; left: 26%; animation-delay: 1s;">✨</span>
+                <span class="deco-star" style="top: 14%; right: 4%; animation-delay: 1.5s;">💫</span>
+
+                <!-- COLUMNA IZQUIERDA: Widgets + Título Cursivo Glossy -->
+                <div class="hero-ui-left">
+                    
+                    <!-- Fila Superior -->
+                    <div class="ui-top-row">
+                        <!-- Tarjeta CARD -->
+                        <div class="id-mini-card">
+                            <div>
+                                <div class="id-mini-badges">
+                                    <span>OUT</span>
+                                    <span>ENTER</span>
+                                </div>
+                                <p>#26 makes</p>
+                                <h4>CARD</h4>
+                                <p>PROCESOS DEL ALMA</p>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Avatar Card" class="id-mini-avatar">
+                        </div>
+
+                        <!-- Píldoras de saludo -->
+                        <div class="ui-center-pills">
+                            <div class="pill-title-tag">CALL ME PROCESOS LZ.</div>
+                            <div class="pill-sub-tag">Thanks for visiting my ocean space 🩵</div>
+                        </div>
+
+                        <!-- Placa de identificación superior derecha -->
+                        <div class="ui-nameplate-box">
+                            <div>
+                                <span class="nameplate-tag">SPIRIT</span>
+                                <div class="nameplate-title">SOUL</div>
+                                <div class="nameplate-sub">Cada etapa es un proceso de fe</div>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=200&q=80" alt="Miniatura" class="nameplate-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Fila Central: Botones + Título Cursivo Grande -->
+                    <div class="ui-middle-row">
+                        <div class="side-quick-btns">
+                            <a href="#soft-profile" class="quick-pill-btn">home</a>
+                            <a href="#reflexion" class="quick-pill-btn">profile</a>
+                            <a href="#videos" class="quick-pill-btn">🩵</a>
+                        </div>
+
+                        <div class="glossy-title-container">
+                            <div class="glossy-script-title">Procesos</div>
+                            <div class="glossy-ribbon-tag">#. PROCESOS LZ</div>
+                        </div>
+
+                        <div class="chibi-sticker-badge">
+                            <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=250&q=80" alt="Sticker">
+                        </div>
+                    </div>
+
+                    <!-- Fila Inferior de Widgets -->
+                    <div class="ui-bottom-row">
+                        <!-- Contador circular 0.6 / 2.0 -->
+                        <div class="circle-stat-widget">
+                            <span class="stat-pill-top">0.6</span>
+                            <img src="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=200&q=80" alt="Stat Avatar">
+                            <span class="stat-pill-bottom">2.0</span>
+                        </div>
+
+                        <!-- Ficha FREEDOM 2026 -->
+                        <div class="freedom-spec-card">
+                            <div>
+                                <span class="spec-tag-mini">create · aesthetic space</span>
+                                <div class="spec-main-word">FREEDOM</div>
+                                <div class="spec-sub-word">15 Howl · Ocean Breeze</div>
+                            </div>
+                            <div class="spec-year-stack">
+                                20<br>26
+                            </div>
+                        </div>
+
+                        <!-- Selector de paleta Color Styles -->
+                        <div class="color-styles-widget">
+                            <div class="color-styles-label">Color Styles</div>
+                            <div class="color-dots-row">
+                                <span class="color-dot" style="background: #7cc4fa;"></span>
+                                <span class="color-dot" style="background: #bae6fd;"></span>
+                                <span class="color-dot" style="background: #c4b5fd;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA: Imagen Protagonista + Tarjeta Inferior -->
+                <div class="hero-ui-right">
+                    <div class="hero-character-frame">
+                        <!-- Puedes cambiar este src por tu imagen de personaje anime o foto favorita -->
+                        <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=700&q=80" alt="Protagonista Inicio" class="hero-character-img">
+
+                        <!-- Tarjeta Flotante Inferior Derecha -->
+                        <div class="floating-bottom-badge">
+                            <img src="https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&w=200&q=80" alt="Detalle">
+                            <div>
+                                <div style="font-size: 0.68rem; color: var(--text-muted); font-weight: 700;">[ SOFT SPIRIT ]</div>
+                                <div class="floating-badge-tag"># FREEDOM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="hero-img-box">
-            <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=600&q=80" alt="Flores acuarela">
-        </div>
-    </section>
+    </header>
 
     <!-- 🩵💜 2. APARTADO: ESTILO SOFT UI / PERFIL CORAZÓN -->
     <section class="soft-profile-section" id="soft-profile" data-aos="fade-up">
@@ -1040,7 +1653,6 @@
             mouse.y = e.clientY;
         });
 
-        // Destellos flotantes en tonos pastel
         const sparkles = Array.from({ length: 30 }, () => ({
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
@@ -1055,13 +1667,12 @@
                 this.x = opts.x;
                 this.y = opts.y;
                 this.size = opts.size;
-                this.style = opts.style; // 'pastel-blue' o 'pastel-purple'
+                this.style = opts.style;
                 this.phase = opts.phase || Math.random() * Math.PI * 2;
                 this.speed = opts.speed || 0.03;
                 this.angle = opts.angle || 0;
                 this.driftX = (Math.random() - 0.5) * 0.2;
 
-                // 1. Brazos orales centrales con volantes (ruffles) en pastel
                 this.oralArms = [];
                 const armCount = 4;
                 for (let a = 0; a < armCount; a++) {
@@ -1081,7 +1692,6 @@
                     });
                 }
 
-                // 2. Filamentos externos finos y largos en tonos pasteles suaves
                 this.filaments = [];
                 const filCount = 12;
                 for (let f = 0; f < filCount; f++) {
@@ -1175,7 +1785,6 @@
             draw() {
                 const isBlue = this.style === 'pastel-blue';
 
-                // 1. BRAZOS ORALES CON VOLANTES EN TONOS PASTELES
                 this.oralArms.forEach(arm => {
                     ctx.save();
                     for (let i = 1; i < arm.points.length - 1; i++) {
@@ -1204,11 +1813,9 @@
                         ctx.closePath();
 
                         if (isBlue) {
-                            // Celeste pastel luminoso
                             ctx.fillStyle = `rgba(186, 230, 253, ${0.55 * (1 - progress * 0.55)})`;
                             ctx.strokeStyle = `rgba(125, 211, 252, ${0.65 * (1 - progress * 0.5)})`;
                         } else {
-                            // Lila / lavanda pastel suave
                             ctx.fillStyle = `rgba(233, 213, 255, ${0.55 * (1 - progress * 0.55)})`;
                             ctx.strokeStyle = `rgba(192, 132, 252, ${0.55 * (1 - progress * 0.5)})`;
                         }
@@ -1219,7 +1826,6 @@
                     ctx.restore();
                 });
 
-                // 2. FILAMENTOS EXTERNOS FINOS EN PASTEL SUAVE
                 this.filaments.forEach(fil => {
                     ctx.save();
                     ctx.beginPath();
@@ -1248,7 +1854,6 @@
                     ctx.restore();
                 });
 
-                // 3. CAMPANA LOBULADA EN TONOS PASTELES CON BRILLOS BLANCOS
                 ctx.save();
                 ctx.translate(this.x, this.y);
                 ctx.rotate(this.angle);
@@ -1272,14 +1877,12 @@
 
                 const bellGrad = ctx.createRadialGradient(0, -h * 0.55, w * 0.05, 0, -h * 0.25, w * 1.15);
                 if (isBlue) {
-                    // Celeste pastel bebé / cielo suave
                     bellGrad.addColorStop(0, 'rgba(125, 211, 252, 0.85)');
                     bellGrad.addColorStop(0.45, 'rgba(186, 230, 253, 0.78)');
                     bellGrad.addColorStop(0.82, 'rgba(224, 242, 254, 0.75)');
                     bellGrad.addColorStop(1, 'rgba(255, 255, 255, 0.9)');
                     ctx.shadowColor = 'rgba(125, 211, 252, 0.55)';
                 } else {
-                    // Lila / lavanda pastel cremoso
                     bellGrad.addColorStop(0, 'rgba(216, 180, 254, 0.82)');
                     bellGrad.addColorStop(0.5, 'rgba(233, 213, 255, 0.75)');
                     bellGrad.addColorStop(0.85, 'rgba(245, 243, 255, 0.82)');
@@ -1291,7 +1894,6 @@
                 ctx.shadowBlur = 24;
                 ctx.fill();
 
-                // Pliegues internos suaves
                 for (let p = -2; p <= 2; p++) {
                     ctx.beginPath();
                     ctx.moveTo(p * w * 0.18, -h * 0.88);
@@ -1301,7 +1903,6 @@
                     ctx.stroke();
                 }
 
-                // Brillos especulares blancos cristalinos
                 ctx.shadowBlur = 0;
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
 
@@ -1331,36 +1932,35 @@
             }
         }
 
-        // Instanciar las 4 medusas en tonos celeste pastel y lila pastel
         const jellyfishes = [
             new DetailedJellyfish({
-                x: window.innerWidth * 0.82,
+                x: window.innerWidth * 0.85,
                 y: window.innerHeight * 0.34,
-                size: 92,
+                size: 88,
                 style: 'pastel-blue',
                 phase: 0,
                 speed: 0.028
             }),
             new DetailedJellyfish({
-                x: window.innerWidth * 0.14,
+                x: window.innerWidth * 0.1,
                 y: window.innerHeight * 0.28,
-                size: 72,
+                size: 70,
                 style: 'pastel-purple',
                 phase: 2.0,
                 speed: 0.032
             }),
             new DetailedJellyfish({
-                x: window.innerWidth * 0.28,
+                x: window.innerWidth * 0.26,
                 y: window.innerHeight * 0.72,
-                size: 50,
+                size: 48,
                 style: 'pastel-blue',
                 phase: 4.1,
                 speed: 0.036
             }),
             new DetailedJellyfish({
-                x: window.innerWidth * 0.72,
+                x: window.innerWidth * 0.74,
                 y: window.innerHeight * 0.76,
-                size: 64,
+                size: 62,
                 style: 'pastel-purple',
                 phase: 1.1,
                 speed: 0.03
