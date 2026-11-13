@@ -17,14 +17,14 @@
         :root {
             --bg-light: #f3f0ff;
             --celeste-pastel: #bae6fd;
-            --celeste-vivo: #38bdf8;
+            --celeste-vivo: #0ea5e9;
             --morado-pastel: #ddd6fe;
             --morado-vivo: #8b5cf6;
             --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
             --soft-gradient: linear-gradient(135deg, #e0f2fe 0%, #f3e8ff 100%);
             --text-dark: #2e244d;
             --text-muted: #645c84;
-            --card-white: rgba(255, 255, 255, 0.92);
+            --card-white: rgba(255, 255, 255, 0.88);
             --radius-ui: 24px;
         }
 
@@ -46,7 +46,7 @@
             line-height: 1.6;
         }
 
-        /* 🌊 FONDO DE MAR CELESTE-MORADO + MULTIPLES MEDUSAS AESTHETIC */
+        /* 🌊 FONDO DE MAR CELESTE-MORADO + CANVAS DE MEDUSAS DETALLADAS */
         .sea-background {
             position: fixed;
             top: 0;
@@ -59,145 +59,37 @@
             overflow: hidden;
         }
 
-        /* OLAS DEL MAR EN LA PARTE INFERIOR (CELESTE Y LILA TRANSLÚCIDO) */
+        #jellyCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* OLAS DEL MAR EN LA PARTE INFERIOR */
         .wave {
             position: absolute;
             bottom: -50px;
             left: 0;
             width: 200%;
-            height: 300px;
+            height: 280px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C150,90 350,-40 500,40 C650,120 900,20 1200,60 L1200,120 L0,120 Z" fill="rgba(168, 85, 247, 0.16)"></path></svg>') repeat-x;
             animation: waveMove 18s linear infinite;
+            z-index: 2;
         }
 
         .wave.wave2 {
             bottom: -30px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C200,40 400,10 600,50 C800,90 1000,30 1200,80 L1200,120 L0,120 Z" fill="rgba(56, 189, 248, 0.22)"></path></svg>') repeat-x;
             animation: waveMove 12s linear infinite reverse;
+            z-index: 3;
         }
 
         @keyframes waveMove {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
-        }
-
-        /* 🪼 MEDUSAS BLANCAS, CELESTES Y MORADAS EN EL FONDO */
-        .jellyfish-container {
-            position: absolute;
-            pointer-events: none;
-        }
-
-        /* Medusa 1: Principal Grande Derecha */
-        .jelly-1 {
-            top: 8%;
-            right: 2%;
-            width: 420px;
-            height: 600px;
-            opacity: 0.72;
-            filter: drop-shadow(0 0 28px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 18px rgba(139, 92, 246, 0.45));
-            animation: floatJelly1 11s ease-in-out infinite alternate;
-        }
-
-        /* Medusa 2: Mediana Izquierda Superior */
-        .jelly-2 {
-            top: 15%;
-            left: 3%;
-            width: 260px;
-            height: 400px;
-            opacity: 0.65;
-            filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 14px rgba(56, 189, 248, 0.55));
-            animation: floatJelly2 14s ease-in-out infinite alternate;
-        }
-
-        /* Medusa 3: Pequeña Centro/Izquierda */
-        .jelly-3 {
-            top: 52%;
-            left: 18%;
-            width: 190px;
-            height: 300px;
-            opacity: 0.6;
-            filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 12px rgba(56, 189, 248, 0.6));
-            animation: floatJelly3 9s ease-in-out infinite alternate;
-        }
-
-        /* Medusa 4: Mediana-Baja Derecha */
-        .jelly-4 {
-            top: 48%;
-            right: 12%;
-            width: 240px;
-            height: 380px;
-            opacity: 0.65;
-            filter: drop-shadow(0 0 24px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 16px rgba(168, 85, 247, 0.55));
-            animation: floatJelly4 13s ease-in-out infinite alternate;
-        }
-
-        @keyframes floatJelly1 {
-            0% { transform: translateY(0px) rotate(0deg) scale(1); }
-            50% { transform: translateY(-45px) rotate(-4deg) scale(1.03); }
-            100% { transform: translateY(-85px) rotate(3deg) scale(0.97); }
-        }
-
-        @keyframes floatJelly2 {
-            0% { transform: translateY(0px) rotate(0deg) scale(0.98); }
-            50% { transform: translateY(-35px) rotate(5deg) scale(1.04); }
-            100% { transform: translateY(-70px) rotate(-3deg) scale(1); }
-        }
-
-        @keyframes floatJelly3 {
-            0% { transform: translateY(0px) rotate(0deg) scale(1); }
-            50% { transform: translateY(-25px) rotate(-6deg) scale(1.05); }
-            100% { transform: translateY(-50px) rotate(4deg) scale(0.95); }
-        }
-
-        @keyframes floatJelly4 {
-            0% { transform: translateY(0px) rotate(0deg) scale(0.95); }
-            50% { transform: translateY(-40px) rotate(4deg) scale(1.02); }
-            100% { transform: translateY(-75px) rotate(-5deg) scale(0.98); }
-        }
-
-        .jelly-head {
-            transform-origin: center top;
-            animation: jellyPulse 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes jellyPulse {
-            0% { transform: scaleX(1) scaleY(1); }
-            50% { transform: scaleX(1.07) scaleY(0.93); }
-            100% { transform: scaleX(0.96) scaleY(1.04); }
-        }
-
-        .tentacle {
-            transform-origin: center top;
-            animation: tentacleWiggle 5s ease-in-out infinite alternate;
-        }
-
-        .t-2 { animation-delay: 0.8s; }
-        .t-3 { animation-delay: 1.6s; }
-        .t-4 { animation-delay: 1.2s; }
-
-        @keyframes tentacleWiggle {
-            0% { transform: rotate(0deg) skewX(0deg); }
-            50% { transform: rotate(4deg) skewX(3deg); }
-            100% { transform: rotate(-4deg) skewX(-3deg); }
-        }
-
-        /* Partículas y destellos celestes/morados */
-        .jelly-sparkle {
-            position: absolute;
-            border-radius: 50%;
-            background: #ffffff;
-            box-shadow: 0 0 12px #38bdf8, 0 0 20px #a855f7;
-            animation: sparkleFade 3.5s ease-in-out infinite alternate;
-        }
-
-        .s1 { top: 20%; right: 20%; width: 7px; height: 7px; animation-delay: 0s; }
-        .s2 { top: 35%; left: 15%; width: 9px; height: 9px; animation-delay: 1s; }
-        .s3 { top: 65%; left: 25%; width: 6px; height: 6px; animation-delay: 2s; }
-        .s4 { top: 75%; right: 18%; width: 8px; height: 8px; animation-delay: 1.5s; }
-
-        @keyframes sparkleFade {
-            0% { opacity: 0.3; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1.5); }
         }
 
         /* NAVEGACIÓN FLOTANTE */
@@ -312,7 +204,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            backdrop-filter: blur(6px);
+            backdrop-filter: blur(8px);
         }
 
         .soft-card img {
@@ -348,12 +240,13 @@
 
         .soft-card-quote {
             grid-column: span 2;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(243, 232, 255, 0.85));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(243, 232, 255, 0.85));
             border: 2px solid rgba(186, 230, 253, 0.85);
             border-radius: 22px;
             padding: 22px;
             position: relative;
             box-shadow: 0 10px 25px rgba(56, 189, 248, 0.14);
+            backdrop-filter: blur(8px);
         }
 
         .quote-header-tags {
@@ -451,6 +344,7 @@
             box-shadow: 0 15px 35px rgba(139, 92, 246, 0.16);
             border: 2px solid rgba(221, 214, 254, 0.9);
             margin-bottom: 50px;
+            backdrop-filter: blur(8px);
         }
 
         .ui-search-bar {
@@ -545,6 +439,7 @@
             border: 1.5px solid rgba(186, 230, 253, 0.8);
             position: relative;
             transition: transform 0.3s ease, border-color 0.3s ease;
+            backdrop-filter: blur(8px);
         }
 
         .story-card:hover {
@@ -589,7 +484,7 @@
         }
 
         .writing-box {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(224, 242, 254, 0.75), rgba(243, 232, 255, 0.8));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(224, 242, 254, 0.75), rgba(243, 232, 255, 0.8));
             border-radius: 28px;
             padding: 40px;
             box-shadow: 0 15px 35px rgba(139, 92, 246, 0.14);
@@ -598,6 +493,7 @@
             grid-template-columns: 0.9fr 1.1fr;
             gap: 35px;
             align-items: center;
+            backdrop-filter: blur(8px);
         }
 
         .writing-img {
@@ -640,6 +536,7 @@
             padding: 15px;
             box-shadow: 0 12px 28px rgba(56, 189, 248, 0.15);
             border: 1.5px solid #ddd6fe;
+            backdrop-filter: blur(8px);
         }
 
         .video-card video {
@@ -659,11 +556,12 @@
 
         /* 🖼️ COLLAGE POLAROID */
         .collage-container {
-            background: linear-gradient(135deg, #bae6fd 0%, #ddd6fe 50%, #e9d5ff 100%);
+            background: linear-gradient(135deg, rgba(186, 230, 253, 0.85) 0%, rgba(221, 214, 254, 0.85) 50%, rgba(233, 213, 255, 0.85) 100%);
             border-radius: 30px;
             padding: 40px 30px;
             border: 2px solid rgba(255, 255, 255, 0.85);
             box-shadow: 0 15px 35px rgba(139, 92, 246, 0.18);
+            backdrop-filter: blur(6px);
         }
 
         .collage-watermark {
@@ -725,13 +623,14 @@
         }
 
         .envelope-wrapper {
-            background: linear-gradient(160deg, #bae6fd 0%, #c4b5fd 55%, #a78bfa 100%);
+            background: linear-gradient(160deg, rgba(186, 230, 253, 0.9) 0%, rgba(196, 181, 253, 0.9) 55%, rgba(167, 139, 250, 0.9) 100%);
             border-radius: 22px;
             padding: 40px 30px 140px;
             box-shadow: 0 22px 45px rgba(139, 92, 246, 0.28);
             position: relative;
             border: 2px solid rgba(255, 255, 255, 0.9);
             overflow: visible;
+            backdrop-filter: blur(8px);
         }
 
         .envelope-header-info {
@@ -870,111 +769,16 @@
             .letter-watermark-title {
                 font-size: 3.2rem;
             }
-            .jelly-1 { width: 280px; height: 440px; right: -30px; }
-            .jelly-2 { width: 180px; height: 300px; left: -20px; }
-            .jelly-3 { display: none; }
-            .jelly-4 { width: 170px; height: 280px; right: -10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 🌊 Fondo Animado con Olas del Mar + 🪼 4 Medusas Celeste, Blanco & Morado Aesthetic -->
+    <!-- 🌊 Fondo Animado con Olas del Mar + 🪼 Medusas Cristalinas y Acuarela con Volantes -->
     <div class="sea-background">
-        
-        <!-- Olas Animadas del Mar -->
+        <canvas id="jellyCanvas"></canvas>
         <div class="wave"></div>
         <div class="wave wave2"></div>
-
-        <!-- 🪼 MEDUSA 1: Grande Principal Derecha (Blanco & Lila Vivo) -->
-        <div class="jellyfish-container jelly-1">
-            <svg viewBox="0 0 350 600" width="100%" height="100%">
-                <defs>
-                    <radialGradient id="whiteJellyGlow1" cx="50%" cy="30%" r="55%">
-                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
-                        <stop offset="45%" stop-color="#e9d5ff" stop-opacity="0.8"/>
-                        <stop offset="80%" stop-color="#c084fc" stop-opacity="0.38"/>
-                        <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
-                    </radialGradient>
-                    <linearGradient id="whiteTentacle1" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-                        <stop offset="50%" stop-color="#d8b4fe" stop-opacity="0.6"/>
-                        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.08"/>
-                    </linearGradient>
-                </defs>
-                <g class="jelly-head">
-                    <path d="M 60 180 C 60 40, 290 40, 290 180 C 260 205, 230 175, 175 190 C 120 205, 90 175, 60 180 Z" fill="url(#whiteJellyGlow1)" stroke="rgba(255,255,255,0.95)" stroke-width="2.5"/>
-                    <path d="M 90 150 C 120 80, 230 80, 260 150" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
-                </g>
-                <g class="tentacle t-1"><path d="M 90 185 Q 60 300, 110 420 T 80 580" fill="none" stroke="url(#whiteTentacle1)" stroke-width="4"/></g>
-                <g class="tentacle t-2"><path d="M 130 195 Q 170 330, 120 440 T 150 590" fill="none" stroke="url(#whiteTentacle1)" stroke-width="5"/></g>
-                <g class="tentacle t-3"><path d="M 175 200 Q 140 340, 190 460 T 175 600" fill="none" stroke="url(#whiteTentacle1)" stroke-width="6"/></g>
-                <g class="tentacle t-4"><path d="M 220 195 Q 250 320, 200 430 T 235 580" fill="none" stroke="url(#whiteTentacle1)" stroke-width="5"/></g>
-            </svg>
-        </div>
-
-        <!-- 🪼 MEDUSA 2: Mediana Izquierda Superior (Celeste Vivo & Blanco) -->
-        <div class="jellyfish-container jelly-2">
-            <svg viewBox="0 0 350 600" width="100%" height="100%">
-                <defs>
-                    <radialGradient id="whiteJellyGlow2" cx="50%" cy="30%" r="55%">
-                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-                        <stop offset="50%" stop-color="#bae6fd" stop-opacity="0.8"/>
-                        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
-                    </radialGradient>
-                </defs>
-                <g class="jelly-head">
-                    <path d="M 70 170 C 70 50, 280 50, 280 170 C 250 190, 220 165, 175 180 C 130 195, 100 165, 70 170 Z" fill="url(#whiteJellyGlow2)" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
-                </g>
-                <g class="tentacle t-2"><path d="M 100 175 Q 80 290, 120 400 T 90 560" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3.5"/></g>
-                <g class="tentacle t-3"><path d="M 175 185 Q 140 310, 180 430 T 170 580" fill="none" stroke="url(#whiteTentacle1)" stroke-width="4.5"/></g>
-                <g class="tentacle t-1"><path d="M 250 175 Q 270 280, 230 390 T 250 550" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3.5"/></g>
-            </svg>
-        </div>
-
-        <!-- 🪼 MEDUSA 3: Pequeña Centro/Izquierda (Celeste Iridescente) -->
-        <div class="jellyfish-container jelly-3">
-            <svg viewBox="0 0 350 600" width="100%" height="100%">
-                <defs>
-                    <radialGradient id="blueJellyGlow3" cx="50%" cy="30%" r="55%">
-                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-                        <stop offset="60%" stop-color="#7dd3fc" stop-opacity="0.72"/>
-                        <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
-                    </radialGradient>
-                </defs>
-                <g class="jelly-head">
-                    <path d="M 80 160 C 80 60, 270 60, 270 160 C 240 180, 210 160, 175 170 C 140 180, 110 160, 80 160 Z" fill="url(#blueJellyGlow3)" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
-                </g>
-                <g class="tentacle t-4"><path d="M 110 165 Q 90 270, 130 380 T 110 540" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3"/></g>
-                <g class="tentacle t-1"><path d="M 175 175 Q 150 290, 185 410 T 175 560" fill="none" stroke="url(#whiteTentacle1)" stroke-width="4"/></g>
-                <g class="tentacle t-2"><path d="M 240 165 Q 260 270, 220 370 T 240 530" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3"/></g>
-            </svg>
-        </div>
-
-        <!-- 🪼 MEDUSA 4: Mediana-Baja Derecha (Violeta Pastel Vivo) -->
-        <div class="jellyfish-container jelly-4">
-            <svg viewBox="0 0 350 600" width="100%" height="100%">
-                <defs>
-                    <radialGradient id="violetJellyGlow4" cx="50%" cy="30%" r="55%">
-                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-                        <stop offset="55%" stop-color="#c4b5fd" stop-opacity="0.72"/>
-                        <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
-                    </radialGradient>
-                </defs>
-                <g class="jelly-head">
-                    <path d="M 75 165 C 75 55, 275 55, 275 165 C 245 185, 215 160, 175 175 C 135 185, 105 160, 75 165 Z" fill="url(#violetJellyGlow4)" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
-                </g>
-                <g class="tentacle t-3"><path d="M 105 170 Q 80 280, 125 390 T 100 550" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3.5"/></g>
-                <g class="tentacle t-2"><path d="M 175 180 Q 145 300, 180 420 T 170 570" fill="none" stroke="url(#whiteTentacle1)" stroke-width="4.5"/></g>
-                <g class="tentacle t-4"><path d="M 245 170 Q 270 280, 225 380 T 245 540" fill="none" stroke="url(#whiteTentacle1)" stroke-width="3.5"/></g>
-            </svg>
-        </div>
-
-        <!-- Destellos Flotantes -->
-        <div class="jelly-sparkle s1"></div>
-        <div class="jelly-sparkle s2"></div>
-        <div class="jelly-sparkle s3"></div>
-        <div class="jelly-sparkle s4"></div>
     </div>
 
     <!-- Menú de Navegación -->
@@ -1215,6 +1019,393 @@
             duration: 1000,
             once: true
         });
+    </script>
+
+    <!-- 🪼 MOTOR DE MEDUSAS DETALLADAS (ESTILO CRISTALINO + ACUARELA CON VOLANTES) -->
+    <script>
+        const canvas = document.getElementById('jellyCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        let mouse = { x: -1000, y: -1000 };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        // Destellos flotantes en el agua
+        const sparkles = Array.from({ length: 30 }, () => ({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            r: Math.random() * 2.2 + 0.8,
+            vy: -(Math.random() * 0.25 + 0.1),
+            phase: Math.random() * Math.PI * 2,
+            color: Math.random() > 0.5 ? '14, 165, 233' : '168, 85, 247'
+        }));
+
+        class DetailedJellyfish {
+            constructor(opts) {
+                this.x = opts.x;
+                this.y = opts.y;
+                this.size = opts.size;
+                this.style = opts.style; // 'crystal-blue' o 'watercolor-purple'
+                this.phase = opts.phase || Math.random() * Math.PI * 2;
+                this.speed = opts.speed || 0.03;
+                this.angle = opts.angle || 0;
+                this.driftX = (Math.random() - 0.5) * 0.2;
+
+                // 1. Brazos orales centrales con volantes (ruffles) como en tus fotos
+                this.oralArms = [];
+                const armCount = 4;
+                for (let a = 0; a < armCount; a++) {
+                    const ratio = (a / (armCount - 1)) * 2 - 1;
+                    const segCount = 22;
+                    const segLen = (this.size * 2.5) / segCount;
+                    let points = [];
+                    for (let s = 0; s < segCount; s++) {
+                        points.push({ x: this.x + ratio * this.size * 0.35, y: this.y + s * segLen });
+                    }
+                    this.oralArms.push({
+                        ratio,
+                        segLen,
+                        points,
+                        offset: a * 1.3,
+                        widthBase: this.size * (0.22 - Math.abs(ratio) * 0.05)
+                    });
+                }
+
+                // 2. Filamentos externos finos y largos (como los hilos oscuros/lila de las fotos)
+                this.filaments = [];
+                const filCount = 12;
+                for (let f = 0; f < filCount; f++) {
+                    const ratio = (f / (filCount - 1)) * 2 - 1;
+                    const segCount = 20;
+                    const segLen = (this.size * (2.2 + Math.random() * 0.7)) / segCount;
+                    let points = [];
+                    for (let s = 0; s < segCount; s++) {
+                        points.push({ x: this.x + ratio * this.size * 0.85, y: this.y + s * segLen });
+                    }
+                    this.filaments.push({
+                        ratio,
+                        segLen,
+                        points,
+                        offset: f * 0.65
+                    });
+                }
+            }
+
+            update() {
+                this.phase += this.speed;
+                const pulse = Math.sin(this.phase);
+                const thrust = Math.max(0, Math.cos(this.phase));
+
+                // Movimiento orgánico ascendente
+                this.y -= (0.22 + thrust * 0.78);
+                this.x += this.driftX + Math.sin(this.phase * 0.45) * 0.32;
+                this.angle = Math.sin(this.phase * 0.35) * 0.1 + this.driftX * 0.5;
+
+                // Reacción suave al cursor
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.hypot(dx, dy);
+                if (dist < 170) {
+                    const force = (170 - dist) / 170;
+                    this.x += (dx / dist) * force * 1.1;
+                    this.y += (dy / dist) * force * 0.7;
+                }
+
+                // Reaparecer suavemente por abajo
+                if (this.y < -this.size * 3.6) {
+                    this.y = height + this.size * 1.3;
+                    this.x = Math.random() * (width * 0.84) + width * 0.08;
+                    [...this.oralArms, ...this.filaments].forEach(strand => {
+                        strand.points.forEach((p, idx) => {
+                            p.x = this.x + strand.ratio * this.size * 0.6;
+                            p.y = this.y + idx * strand.segLen;
+                        });
+                    });
+                }
+
+                this.bellW = this.size * (1 - pulse * 0.13);
+                this.bellH = this.size * 0.68 * (1 + pulse * 0.15);
+
+                // Actualizar física de brazos con volantes
+                this.oralArms.forEach(arm => {
+                    arm.points[0].x = this.x + Math.cos(this.angle) * (arm.ratio * this.bellW * 0.32);
+                    arm.points[0].y = this.y + Math.sin(this.angle) * (arm.ratio * this.bellW * 0.32) + this.bellH * 0.05;
+
+                    for (let i = 1; i < arm.points.length; i++) {
+                        const prev = arm.points[i - 1];
+                        const curr = arm.points[i];
+                        const wave = Math.sin(this.phase * 1.2 - i * 0.3 + arm.offset) * (0.5 + i * 0.08);
+                        curr.x += wave * 0.3;
+                        curr.y += 0.45;
+
+                        const vx = curr.x - prev.x;
+                        const vy = curr.y - prev.y;
+                        const d = Math.hypot(vx, vy) || 1;
+                        curr.x = prev.x + (vx / d) * arm.segLen;
+                        curr.y = prev.y + (vy / d) * arm.segLen;
+                    }
+                });
+
+                // Actualizar física de filamentos externos finos
+                this.filaments.forEach(fil => {
+                    fil.points[0].x = this.x + Math.cos(this.angle) * (fil.ratio * this.bellW * 0.88);
+                    fil.points[0].y = this.y + Math.sin(this.angle) * (fil.ratio * this.bellW * 0.88) + this.bellH * 0.08;
+
+                    for (let i = 1; i < fil.points.length; i++) {
+                        const prev = fil.points[i - 1];
+                        const curr = fil.points[i];
+                        const wave = Math.sin(this.phase * 1.35 - i * 0.32 + fil.offset) * (0.65 + i * 0.11);
+                        curr.x += wave * 0.35;
+                        curr.y += 0.48;
+
+                        const vx = curr.x - prev.x;
+                        const vy = curr.y - prev.y;
+                        const d = Math.hypot(vx, vy) || 1;
+                        curr.x = prev.x + (vx / d) * fil.segLen;
+                        curr.y = prev.y + (vy / d) * fil.segLen;
+                    }
+                });
+            }
+
+            draw() {
+                const isBlue = this.style === 'crystal-blue';
+
+                // 1. DIBUJAR BRAZOS ORALES CON VOLANTES RIZADOS (como en tus 2 imágenes)
+                this.oralArms.forEach(arm => {
+                    ctx.save();
+                    for (let i = 1; i < arm.points.length - 1; i++) {
+                        const p1 = arm.points[i];
+                        const p2 = arm.points[i + 1];
+                        const progress = i / arm.points.length;
+                        const taper = 1 - progress * 0.82;
+                        const ruffle = Math.sin(i * 1.4 + this.phase * 2 + arm.offset) * arm.widthBase * 0.55 * taper;
+                        const ribbonW = arm.widthBase * taper;
+
+                        // Cinta translúcida central
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x - ribbonW * 0.5 + ruffle * 0.4, p1.y);
+                        ctx.quadraticCurveTo(
+                            (p1.x + p2.x) * 0.5 + ruffle,
+                            (p1.y + p2.y) * 0.5,
+                            p2.x - ribbonW * 0.4 - ruffle * 0.3,
+                            p2.y
+                        );
+                        ctx.lineTo(p2.x + ribbonW * 0.4 - ruffle * 0.3, p2.y);
+                        ctx.quadraticCurveTo(
+                            (p1.x + p2.x) * 0.5 + ruffle + ribbonW * 0.6,
+                            (p1.y + p2.y) * 0.5,
+                            p1.x + ribbonW * 0.5 + ruffle * 0.4,
+                            p1.y
+                        );
+                        ctx.closePath();
+
+                        if (isBlue) {
+                            ctx.fillStyle = `rgba(125, 211, 252, ${0.42 * (1 - progress * 0.6)})`;
+                            ctx.strokeStyle = `rgba(2, 132, 199, ${0.55 * (1 - progress * 0.5)})`;
+                        } else {
+                            ctx.fillStyle = `rgba(216, 180, 254, ${0.48 * (1 - progress * 0.6)})`;
+                            ctx.strokeStyle = `rgba(147, 51, 234, ${0.5 * (1 - progress * 0.5)})`;
+                        }
+                        ctx.lineWidth = 1.1;
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                    ctx.restore();
+                });
+
+                // 2. DIBUJAR FILAMENTOS FINOS EXTERNOS (los hilos largos oscuros/lila)
+                this.filaments.forEach(fil => {
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.moveTo(fil.points[0].x, fil.points[0].y);
+                    for (let i = 1; i < fil.points.length - 1; i++) {
+                        const xc = (fil.points[i].x + fil.points[i + 1].x) / 2;
+                        const yc = (fil.points[i].y + fil.points[i + 1].y) / 2;
+                        ctx.quadraticCurveTo(fil.points[i].x, fil.points[i].y, xc, yc);
+                    }
+                    const last = fil.points[fil.points.length - 1];
+                    ctx.lineTo(last.x, last.y);
+
+                    const grad = ctx.createLinearGradient(fil.points[0].x, fil.points[0].y, last.x, last.y);
+                    if (isBlue) {
+                        grad.addColorStop(0, 'rgba(15, 23, 42, 0.55)');
+                        grad.addColorStop(0.5, 'rgba(3, 105, 161, 0.35)');
+                        grad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+                    } else {
+                        grad.addColorStop(0, 'rgba(107, 33, 168, 0.45)');
+                        grad.addColorStop(0.6, 'rgba(168, 85, 247, 0.25)');
+                        grad.addColorStop(1, 'rgba(216, 180, 254, 0)');
+                    }
+                    ctx.strokeStyle = grad;
+                    ctx.lineWidth = 1.25;
+                    ctx.stroke();
+                    ctx.restore();
+                });
+
+                // 3. DIBUJAR LA CAMPANA LOBULADA CON BRILLOS ESPECULARES (como tus fotos)
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+
+                const w = this.bellW;
+                const h = this.bellH;
+
+                // Silueta principal con lóbulos inferiores marcados
+                ctx.beginPath();
+                ctx.moveTo(-w, 0);
+                ctx.bezierCurveTo(-w * 1.08, -h * 1.42, w * 1.08, -h * 1.42, w, 0);
+
+                // 6 lóbulos ondulados en el borde inferior de la campana
+                const lobes = 6;
+                for (let l = lobes; l > 0; l--) {
+                    const xStart = ((l / lobes) * 2 - 1) * w;
+                    const xEnd = (((l - 1) / lobes) * 2 - 1) * w;
+                    const xMid = (xStart + xEnd) * 0.5;
+                    const lobeDepth = (l === 3 || l === 4) ? h * 0.22 : h * 0.16;
+                    ctx.quadraticCurveTo(xMid, lobeDepth, xEnd, 0.02 * h);
+                }
+                ctx.closePath();
+
+                // Degradado cristalino o acuarela
+                const bellGrad = ctx.createRadialGradient(0, -h * 0.55, w * 0.05, 0, -h * 0.25, w * 1.15);
+                if (isBlue) {
+                    bellGrad.addColorStop(0, 'rgba(2, 132, 199, 0.92)');
+                    bellGrad.addColorStop(0.45, 'rgba(14, 165, 233, 0.78)');
+                    bellGrad.addColorStop(0.82, 'rgba(125, 211, 252, 0.65)');
+                    bellGrad.addColorStop(1, 'rgba(224, 242, 254, 0.85)');
+                    ctx.shadowColor = 'rgba(56, 189, 248, 0.55)';
+                } else {
+                    bellGrad.addColorStop(0, 'rgba(192, 132, 252, 0.75)');
+                    bellGrad.addColorStop(0.5, 'rgba(216, 180, 254, 0.65)');
+                    bellGrad.addColorStop(0.85, 'rgba(243, 232, 255, 0.72)');
+                    bellGrad.addColorStop(1, 'rgba(168, 85, 247, 0.55)');
+                    ctx.shadowColor = 'rgba(168, 85, 247, 0.45)';
+                }
+
+                ctx.fillStyle = bellGrad;
+                ctx.shadowBlur = 22;
+                ctx.fill();
+
+                // Pliegues verticales internos de cada lóbulo (efecto 3D de la foto)
+                for (let p = -2; p <= 2; p++) {
+                    ctx.beginPath();
+                    ctx.moveTo(p * w * 0.18, -h * 0.88);
+                    ctx.quadraticCurveTo(p * w * 0.34, -h * 0.35, p * w * 0.32, h * 0.08);
+                    ctx.strokeStyle = isBlue ? 'rgba(3, 105, 161, 0.32)' : 'rgba(126, 34, 206, 0.25)';
+                    ctx.lineWidth = 1.4;
+                    ctx.stroke();
+                }
+
+                // Brillos especulares blancos en la parte superior (efecto cristal húmedo de la 1ª imagen)
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+
+                // Reflejo curvo izquierdo
+                ctx.beginPath();
+                ctx.ellipse(-w * 0.48, -h * 0.52, w * 0.16, h * 0.08, -0.55, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Reflejo curvo derecho
+                ctx.beginPath();
+                ctx.ellipse(w * 0.45, -h * 0.5, w * 0.18, h * 0.07, 0.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Motas brillantes en la coronilla
+                const specks = [
+                    [-0.15, -0.82, 2.2], [0.05, -0.88, 1.8], [0.22, -0.78, 2.0],
+                    [-0.28, -0.72, 1.5], [0.12, -0.72, 1.4], [-0.05, -0.76, 1.6]
+                ];
+                specks.forEach(([sx, sy, sr]) => {
+                    ctx.beginPath();
+                    ctx.arc(w * sx, h * sy, sr, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Contorno fino cristalino
+                ctx.strokeStyle = isBlue ? 'rgba(255, 255, 255, 0.8)' : 'rgba(168, 85, 247, 0.5)';
+                ctx.lineWidth = 1.3;
+                ctx.stroke();
+
+                ctx.restore();
+            }
+        }
+
+        // Instanciar las 4 medusas combinando ambos estilos de tus imágenes
+        const jellyfishes = [
+            // 1. Medusa Principal Derecha (Estilo Azul Cristalino de tu 1ª foto)
+            new DetailedJellyfish({
+                x: window.innerWidth * 0.82,
+                y: window.innerHeight * 0.34,
+                size: 92,
+                style: 'crystal-blue',
+                phase: 0,
+                speed: 0.028
+            }),
+            // 2. Medusa Izquierda Superior (Estilo Acuarela Lila/Morada de tu 2ª foto)
+            new DetailedJellyfish({
+                x: window.innerWidth * 0.14,
+                y: window.innerHeight * 0.28,
+                size: 72,
+                style: 'watercolor-purple',
+                phase: 2.0,
+                speed: 0.032
+            }),
+            // 3. Medusa Pequeña Centro-Izquierda (Estilo Azul Cristalino)
+            new DetailedJellyfish({
+                x: window.innerWidth * 0.28,
+                y: window.innerHeight * 0.72,
+                size: 50,
+                style: 'crystal-blue',
+                phase: 4.1,
+                speed: 0.036
+            }),
+            // 4. Medusa Mediana-Baja Derecha (Estilo Acuarela Lila/Morada)
+            new DetailedJellyfish({
+                x: window.innerWidth * 0.72,
+                y: window.innerHeight * 0.76,
+                size: 64,
+                style: 'watercolor-purple',
+                phase: 1.1,
+                speed: 0.03
+            })
+        ];
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            sparkles.forEach(s => {
+                s.y += s.vy;
+                s.phase += 0.04;
+                if (s.y < -10) {
+                    s.y = height + 10;
+                    s.x = Math.random() * width;
+                }
+                const alpha = 0.25 + (Math.sin(s.phase) + 1) * 0.35;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${s.color}, ${alpha})`;
+                ctx.fill();
+            });
+
+            jellyfishes.forEach(j => {
+                j.update();
+                j.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
     </script>
 </body>
 </html>
